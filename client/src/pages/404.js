@@ -15,3 +15,5 @@ function Wildcard() {
     </div>
   );
 }
+
+export default Wildcard;
