@@ -19,14 +19,14 @@ export const QUERY_PRODUCTS = gql`
 `;
 
 // QUERY_CHECKOUT takes an array of product _id and returns a Stripe session ID to be used for payment.
-export const QUERY_CHECKOUT = gql`
-// getCheckout is a mutation, not a query to do a GET request for  data from the server
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
-      session
-    }
-  }
-`;
+// export const QUERY_CHECKOUT = gql`
+// // getCheckout is a mutation, not a query to do a GET request for  data from the server
+//   query getCheckout($products: [ID]!) {
+//     checkout(products: $products) {
+//       session
+//     }
+//   }
+// `;
 
 // QUERY_ALL_PRODUCTS returns a list of all products with their _id, name, description, price, quantity, image, and the _id of their associated category
 export const QUERY_ALL_PRODUCTS = gql`
