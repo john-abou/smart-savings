@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // import apollo queries later 
 
 
-function Signup() {
+export default function Signup() {
   // Define initial form state (useState hook)
   // Define a state for form validation
   // Define the form from DOM
@@ -42,5 +42,3 @@ function Signup() {
     </div>
   );
 }
-
-module.exports = Signup;

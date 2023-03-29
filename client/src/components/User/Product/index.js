@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import hook to get global state later
 // import apollo queries later 
 
-function Product() {
+export default function Product() {
   // Define state,dispatch from global state hook
   // Destructure state from global state hook
   // Define Mutations for user -- addToCart, updateCartAmount

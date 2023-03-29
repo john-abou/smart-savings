@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import hook to get global state later
 // import apollo queries later 
 
-function Product() {
+export default function Product() {
   
 
   return (
@@ -13,5 +13,3 @@ function Product() {
     </div>
   );
 }
-
-module.exports = Product;

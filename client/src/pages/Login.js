@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import hook to get global state later
 // import apollo queries later 
 
-function Login( ) {
+export default function Login( ) {
   // Create state vars for form data
   // Define Mutation for login
 
@@ -21,5 +21,3 @@ function Login( ) {
     </div>
   );
 }
-
-module.exports = Login;

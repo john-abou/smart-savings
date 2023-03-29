@@ -5,7 +5,7 @@ import React from 'react';
 // import hooks to use query/mutations apollo later
 
 
-function Home( ) {
+export default function Home( ) {
   return (
     <div>
       {/* Render the Product Container */}
@@ -13,4 +13,3 @@ function Home( ) {
     </div>
   );
 }
-module.exports = Home;
