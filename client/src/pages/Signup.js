@@ -20,24 +20,25 @@ export default function Signup() {
 
   return (
     <div>
+      <Link to="/login">← Go to Login</Link>
       <form>
-        <div class="form-group">
+        <div classNameName="form-group">
           <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" aria-describedby="username" placeholder="Enter username" />
+          <input type="text" className="form-control" id="username" aria-describedby="username" placeholder="Enter username" />
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email" />
+          <input type="email" className="form-control" id="email" aria-describedby="email" placeholder="Enter email" />
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" />
+          <input type="password" className="form-control" id="password" placeholder="Password" />
         </div>
-        <div class="form-group">
-          <label for='admin' class="form-check-label"> Admin </label>
-          <input type="checkbox" class="form-check-input" id="admin" />
+        <div className="form-group">
+          <label for='admin' className="form-check-label"> Admin </label>
+          <input type="checkbox" className="form-check-input" id="admin" />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
   );
