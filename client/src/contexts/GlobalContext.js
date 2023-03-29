@@ -8,6 +8,7 @@ const StoreProvider = ({ value = [], ...props }) => {
   const [store, setStore] = useState({
     products: [],
     cart: [],
+    admin: false, 
     cartOpen: false,
     categories: [],
     currentCategory: '',

@@ -25,7 +25,11 @@ export default function ProductContainer() {
   return (
     <section id='products'>
       { /* Render 1 component based on id */ }
-      <Product items={products}/>
+      {
+        products.map((product) => (
+          <Product key={product._id} product={product} />
+        ))
+      }
     </section>
   );
   }
