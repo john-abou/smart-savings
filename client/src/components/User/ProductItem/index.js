@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import components later
 // import hook to get global state later
 // import apollo queries later 
 
-export default function Product(item) {
+export default function ProductItem( { product } ) {
+  const { name, description, price, image, quantity, category } = product;
   // Define state,dispatch from global state hook
   // Destructure state from global state hook
   // Define Mutations for user -- addToCart, updateCartAmount
@@ -19,18 +20,18 @@ export default function Product(item) {
 
 
   return (
-    <div>
-      <div classNameName='card'>
+    <div className='col-sm-12 col-md-6 col-lg-3'>
+      <div className='card'>
         <div className='card-body'>
-          <h5 className='card-title'>{item.name}</h5>
-          <p className='card-text'>{item.description}</p>
-          <p className='card-text'>{item.price}</p>
+          <h5 className='card-title'>{name}</h5>
+          <p className='card-text'>{description}</p>
+          <p className='card-text'>$CAD: {price}</p>
+          <img src={image}></img>
           <button className='btn btn-primary' onClick={addToCart}>Add to Cart</button>
-          <img src={item.image}></img>
         </div>
         <div className='card-footer'>
-          <small className='text-muted'>Stock: {item.quantity}</small>
-          <small className='text-muted'>Category: {item.category}</small>
+          <small className='text-muted'>Stock: {quantity}</small>
+          <small className='text-muted'>Category: {category}</small>
         </div>
       </div>
     </div>

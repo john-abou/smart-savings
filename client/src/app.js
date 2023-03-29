@@ -4,12 +4,15 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { StoreProvider } from './contexts/GlobalContext';
 
 // import components
-import Home from './pages/Home'
+// import Home from './pages/Home'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ProductPage from './pages/Product';
 import Purchased from './pages/Purchased';
 import Wildcard from './pages/404';
+import ProductContainer from './components/user/ProductContainer';
+import UserHome from './pages/user/Userhome';
+
 
 // Construct the Apollo client
 const client = new ApolloClient({
@@ -27,7 +30,7 @@ export default function App() {
             <Routes>
               <Route 
                   path="/" 
-                  element={<Home />}
+                  element={<UserHome />}
                 />
               <Route
                 path="/login"

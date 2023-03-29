@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useStoreContext } from '../../contexts/GlobalState';
+import { useStoreContext } from '../../contexts/GlobalContext';
 
 export default function Navbar() {
-  const [state, dispatch] = useStoreContext();
+  const initialState = useStoreContext();
+  const {loggedIn} = initialState;
+  // const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
@@ -12,12 +14,12 @@ export default function Navbar() {
           Smart Savings
         </Link>
         { /* Render login/signup or logout based on user state */}
-        {!state.loggedIn ? (
+        {!loggedIn ? (
           <div>
-            <button className='btn btn-primary'>
+            <button className='btn btn-outline-primary'>
               <Link to='/login'>Login</Link>
             </button>
-            <button className='btn btn-primary'>
+            <button className='btn btn-outline-primary'>
               <Link to='/signup'>Sign Up</Link>
             </button> 
           </div>

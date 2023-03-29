@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_PRODUCT } from '../utils/queries';
-import Product from '../components/Product';
+import ProductItem from '../components/user/ProductItem';
 // import components later
 // import hook to get global state later
 // import apollo queries later 
@@ -25,7 +24,7 @@ export default function ProductPage() {
   return (
     <div>
       { /* Render 1 component based on id */ }
-      <Product  data={product}/>
+      <ProductItem  data={product}/>
     </div>
   );
 }
