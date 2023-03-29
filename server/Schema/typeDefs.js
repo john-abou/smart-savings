@@ -58,6 +58,7 @@ type Mutation{
     addOrder(products:[ID]!):Order
     addProduct(name:String!,description:String!,price:String!,category:ID!):Order
     removeProduct(productId:ID!):Order
+    appendCompetitiorPriceHistory(productId:ID!):Product
 }
 `;
 
