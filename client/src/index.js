@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-// StrictMode is used for development purposes only -- it will help you find potential problems in your application
+// Strict mode is used for dev only -- it helps you find potential problems in your app
 ReactDOM.render(
   <React.StrictMode>
     <App />
