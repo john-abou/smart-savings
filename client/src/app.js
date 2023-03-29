@@ -30,23 +30,23 @@ function App() {
             <Routes>
               <Route 
                   path="/" 
-                  element={/* Add home component */} 
+                  element={<Home />}
                 />
               <Route
                 path="/login"
-                element={/* Add login component */}
+                element={<Login />}
               />
               <Route
                 path="/signup"
-                element={/* Add signup component */}
+                element={<Signup />}
               />
               <Route
                 path="/profile"
-                element={/* Add profile component */}
+                element={<Profile />}
               />
               <Route
                 path="/purchased"
-                element={/* Add purchased component */}
+                element={<Purchased />}
               />
               <Route
                 path="/*"
