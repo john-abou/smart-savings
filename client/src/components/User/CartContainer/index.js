@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Auth from '../../utils/auth';
+import Auth from '../../../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import CartItem from '../CartItem';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';

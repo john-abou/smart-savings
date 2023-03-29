@@ -28,7 +28,7 @@ export default function ProductContainer() {
       {
         products.map((product) => (
           <Product key={product._id} product={product} />
-        ))
+        )) 
       }
     </section>
   );

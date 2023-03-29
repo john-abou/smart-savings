@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { useStoreContext } from "../../contexts/GlobalContext";
+import { useStoreContext } from "../../../contexts/GlobalContext";
 
 // Import delete mutation and query to get all cart items
 
