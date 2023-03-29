@@ -7,7 +7,7 @@ import { StoreProvider } from './contexts/GlobalContext';
 import Home from './pages/Home'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Product from './pages/Product';
+import ProductPage from './pages/Product';
 import Purchased from './pages/Purchased';
 import Wildcard from './pages/404';
 
@@ -39,7 +39,7 @@ export default function App() {
               />
               <Route
                 path="/Product"
-                element={<Product />}
+                element={<ProductPage />}
               />
               <Route
                 path="/purchased"

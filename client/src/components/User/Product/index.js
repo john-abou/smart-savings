@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import hook to get global state later
 // import apollo queries later 
 
-export default function Product() {
+export default function Product(items) {
   // Define state,dispatch from global state hook
   // Destructure state from global state hook
   // Define Mutations for user -- addToCart, updateCartAmount
@@ -21,15 +21,23 @@ export default function Product() {
   return (
     <div>
       {/* Loop through all products in the Product Container and display them */}
-      <div class='card'>
-        <div class='card-body'>
-          <h5 class='card-title'>Product Name</h5>
-          <p class='card-text'>Product Description</p>
-          <p class='card-text'>Price</p>
-          <button class='btn btn-primary' onClick={addToCart}>Add to Cart</button>
-          <img></img>
-        </div>
-      </div>
+      {
+        items.map((item) => (
+          <div classNameName='card'>
+            <div className='card-body'>
+              <h5 className='card-title'>{item.name}</h5>
+              <p className='card-text'>{item.description}</p>
+              <p className='card-text'>{item.price}</p>
+              <button className='btn btn-primary' onClick={addToCart}>Add to Cart</button>
+              <img src={item.image}></img>
+            </div>
+            <div className='card-footer'>
+              <small className='text-muted'>Stock: {item.quantity}</small>
+              <small className='text-muted'>Category: {item.category}</small>
+            </div>
+          </div>
+        ))
+      }
     </div>
   );
 }
