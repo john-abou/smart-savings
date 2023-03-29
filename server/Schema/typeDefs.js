@@ -13,6 +13,16 @@ type Auth{
     user:User
 }
 
+type Competition{
+    link:String
+    priceHistory:[PriceHistory]
+}
+
+type PriceHistory{
+    price: String
+    date: String
+}
+
 type Product{
     _id:ID
     name:String
@@ -20,6 +30,9 @@ type Product{
     price:String
     image:String
     category:Category
+    AmazonHistory: Competition
+    WalmartHistory: Competition
+    LoblawsHistory: Competition
 }
 
 type Category{

@@ -2,6 +2,18 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const priceHistorySchema = new Schema({
+  date: { 
+    type: Date,
+    default: Date.now,
+    required: true
+    },
+  price: {
+    type: Number,
+    required: true
+  }
+});
+
 const productSchema = new Schema({
   name: {
     type: String,
@@ -28,8 +40,21 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Category',
     required: true
+  },
+  AmazonHistory: {
+    link: String,
+    priceHistory: [priceHistorySchema]
+  },
+  WalmartHistory: {
+    link: String, 
+    priceHistory: [priceHistorySchema]
+  },
+  LoblawsHistory: {
+    link: String,
+    priceHistory: [priceHistorySchema]
   }
 });
+
 
 const Product = mongoose.model('Product', productSchema);
 
