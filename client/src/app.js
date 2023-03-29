@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import ApolloClient from 'apollo-boost';
-import { StoreProvider } from './utils/GlobalState';
+import { StoreProvider } from './contexts/GlobalContext';
 
 // import components
-import Navbar from './components/Navbar';
-import Home from './components/Home'
-
+import Home from './pages/Home'
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import ProductPage from './pages/Product';
+import Purchased from './pages/Purchased';
+import Wildcard from './pages/404';
 
 // Construct the Apollo client
 const client = new ApolloClient({
@@ -16,18 +18,37 @@ const client = new ApolloClient({
 });
 
 
-function App() {
+export default function App() {
   return (
     <ApolloProvider client={client}>
       <StoreProvider>
         <Router>
           <div>
-            <Navbar />
             <Routes>
               <Route 
                   path="/" 
-                  element={/* Add home component */} 
+                  element={<Home />}
                 />
+              <Route
+                path="/login"
+                element={<Login />}
+              />
+              <Route
+                path="/signup"
+                element={<Signup />}
+              />
+              <Route
+                path="/Product"
+                element={<ProductPage />}
+              />
+              <Route
+                path="/purchased"
+                element={<Purchased />}
+              />
+              <Route
+                path="/*"
+                element={<Wildcard />}
+              />
             </Routes>
           </div>
         </Router>
