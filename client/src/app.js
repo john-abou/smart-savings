@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { StoreProvider } from './contexts/GlobalContext';
 
 // import components
@@ -12,7 +12,6 @@ import Purchased from './pages/Purchased';
 import Wildcard from './pages/404';
 import ProductContainer from './components/User/ProductContainer';
 import UserHome from './pages/user/Userhome';
-
 
 // Construct the Apollo client
 const client = new ApolloClient({
