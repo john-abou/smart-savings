@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
-import ProductContainer from '../../components/user/ProductContainer';
+import ProductContainer from '../../components/User/ProductContainer';
 
 export default function UserHome() {
   return (

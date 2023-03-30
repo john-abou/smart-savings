@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import ProductItem from '../components/user/ProductItem';
+import ProductItem from '../components/User/ProductItem';
 // import components later
 // import hook to get global state later
 // import apollo queries later 
