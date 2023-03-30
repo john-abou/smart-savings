@@ -28,6 +28,7 @@ type Product{
     name:String
     description:String
     price:String
+    quantity:Int
     image:String
     category:Category
     AmazonHistory: Competition
