@@ -3,10 +3,12 @@ import Navbar from '../../components/Navbar';
 import ProductContainer from '../../components/user/ProductContainer';
 
 export default function UserHome() {
-  return(
+  return (
     <div>
       <Navbar />
+      <h1>Welcome to your Dashboard</h1>
+      <p>View and manage your account information and purchase history.</p>
       <ProductContainer />
     </div>
-  )
+  );
 }

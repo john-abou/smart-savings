@@ -1,23 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import components later
-// import hook to get global state later
-// import apollo queries later 
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../graphql/mutations';
+import Navbar from '../../components/Navbar';
 
-export default function Login( ) {
-  // Create state vars for form data
-  // Define Mutation for login
+// Login page component that renders a form to log in a user
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // Define a state for form validation errors (useState hook)
+  const [errors, setErrors] = useState(null);
+  // Define the loginUser mutation (useMutation hook) and pass in the LOGIN_USER mutation
+  const [loginUser] = useMutation(LOGIN_USER);
 
-  // Define function to handle form submission
+  // handleFormSubmit function to execute loginUser mutation and handle errors
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await loginUser({ variables: { email, password } });
+      // Set global state with user data
+      console.log('User data:', data);
+    } catch (error) {
+      setErrors(error.message);
+    }
+  };
 
-  // Define a function to handle form changes (used in form onChange)
-  
+  // handleInputChange function to update state based on form input changes 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    // name will be either 'email' or 'password'
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
+  };
+
+  // Render the login form with a link to the signup page and a button to submit the form 
   return (
     <div>
+      <Navbar />
       <Link to="/signup">← Go to Signup</Link>
-
       <h2>Login</h2>
-      {/* Create form for user to login */}
+      <form onSubmit={handleFormSubmit}>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={handleInputChange}
+          />
+        </div>
+        {errors && <p>{errors}</p>}
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 }
