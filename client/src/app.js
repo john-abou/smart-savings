@@ -10,7 +10,7 @@ import Signup from './pages/Signup';
 import ProductPage from './pages/Product';
 import Purchased from './pages/Purchased';
 import Wildcard from './pages/404';
-import ProductContainer from './components/user/ProductContainer';
+import ProductContainer from './components/User/ProductContainer';
 import UserHome from './pages/user/Userhome';
 
 
