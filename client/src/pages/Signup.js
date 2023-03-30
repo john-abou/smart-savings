@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../graphql/mutations';
-import Navbar from '../../components/Navbar';
+import { LOGIN } from '../utils/mutations';
+import Navbar from '../components/Navbar';
 
 // Login page component that renders a form to log in a user
 export default function Login() {
@@ -10,8 +10,8 @@ export default function Login() {
   const [password, setPassword] = useState('');
   // Define a state for form validation errors (useState hook)
   const [errors, setErrors] = useState(null);
-  // Define the loginUser mutation (useMutation hook) and pass in the LOGIN_USER mutation
-  const [loginUser] = useMutation(LOGIN_USER);
+  // Define the loginUser mutation (useMutation hook) and pass in the LOGIN mutation
+  const [loginUser] = useMutation(LOGIN);
 
   // handleFormSubmit function to execute loginUser mutation and handle errors
   const handleFormSubmit = async (event) => {
