@@ -10,23 +10,23 @@ import ProductItem from '../ProductItem';
 
 export default function ProductContainer() {
 
-  const [showProducts, setShowProducts] = useState(); 
+  // const [showProducts, setShowProducts] = useState(); 
 
   const  { data }  = useQuery(QUERY_ALL_PRODUCTS);
 
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
   const products = data?.products || [];
   
   console.log(products);
 
-  setShowProducts(products);
+  // setShowProducts(products);
 
-  //console.log(typeof (products))
+  // //console.log(typeof (products))
   },[data]);
 
-  /*   const products = [
+  const products = [
     {
       _id: 1,
       name: 'Product 1',
@@ -68,13 +68,13 @@ export default function ProductContainer() {
       quantity: 50,
       category: 'Category 5'
     }
-  ]; */
+  ];
 
   return (
     <section id='products' className='container-fluid'>
       <div className='row'>
         {
-          showProducts.map((product) => (
+          products.map((product) => (
             <ProductItem key={product._id} product={product} />
           ))
         }

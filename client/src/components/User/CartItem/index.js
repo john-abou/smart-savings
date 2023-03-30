@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
 import { useStoreContext } from "../../../contexts/GlobalContext";
+import { UPDATE_CART_QUANTITY, REMOVE_FROM_CART } from "../../../utils/actions";
 
 // Import delete mutation and query to get all cart items
 
@@ -11,14 +10,16 @@ export default function CartItem({ item }) {
   // Destructure state from global state hook
   const { cart } = state;
   // Define Mutations for user -- addToCart, updateCartAmount
+  
 
   // Define a function to handle add to cart, should add item to cart and increase cart count
   const removeFromCart = () => {
-    // Define mutation for removing from
-    // Use apollo client to execute mutation
-    // Use dispatch to update global state
+    dispatch({
+      type: REMOVE_FROM_CART,
+      _id: item._id
+    })
   };
-
+  
   return (
     <div className="flex-row">
       <div>
