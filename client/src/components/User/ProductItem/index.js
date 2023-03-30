@@ -15,19 +15,19 @@ export default function ProductItem( { product } ) {
   // Define a function to handle add to cart, should add item to cart and increase cart count in global state
   const addToCart = () => { 
     // Determine if the item is in the cart, then add to cart and update quantity
-    // const itemInCart = cart.find((item) => item._id === product._id)
+    /* const itemInCart = cart.find((item) => item._id === product._id)
 
-    // if (itemInCart) {
-    //   dispatch({
-    //     type: UPDATE_CART_AMOUNT,
-    //     _id: product._id,
-    //     purchaseQuantity: parseInt(product.quantity) + 1
-    //   })
-    // }
-    // dispatch({
-    //   type: ADD_TO_CART,
-    //   product: { ...product, purchaseQuantity: 1 }
-    // });
+    if (itemInCart) {
+      dispatch({
+        type: UPDATE_CART_AMOUNT,
+        _id: product._id,
+        purchaseQuantity: parseInt(product.quantity) + 1
+      })
+    }
+    dispatch({
+      type: ADD_TO_CART,
+      product: { ...product, purchaseQuantity: 1 }
+    }); */
 
     cart.forEach(item => {
       console.log('item_id:', item._id);
@@ -43,16 +43,15 @@ export default function ProductItem( { product } ) {
         });
         // Exit the function
         return;
+      } else {
+        console.log("cart behind 1 click: ", cart);
+        // If the item is not in the cart, add it to the cart
+        dispatch({
+          type: ADD_TO_CART,
+          product: { ...product, purchaseQuantity: 1 }
+        });
       }
     });
-
-    console.log("before adding: ", cart);
-    // If the item is not in the cart, add it to the cart
-    dispatch({
-      type: ADD_TO_CART,
-      product: { ...product, purchaseQuantity: 1 }
-    });
-    console.log("after adding: ", cart);
   }
 
   const removeFromCart = () => {
