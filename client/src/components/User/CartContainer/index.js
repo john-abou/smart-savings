@@ -1,13 +1,8 @@
-import React, { useEffect } from 'react';
-import Auth from '../../../../utils/auth';
-import { useStoreContext } from '../../utils/GlobalState';
+import React, { useReducer } from 'react';
+import { reducer } from '../../../utils/reducers'
+import { useStoreContext } from '../../../contexts/GlobalContext';
 import CartItem from '../CartItem';
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
-
-// Import useQuery and useMutation hooks from @apollo/client
-// import reducers from '../../utils/reducers';
-// Import query and mutation functions from utils/queries.js and utils/mutations.js
-// Import CartItem component from components/CartItem.js
+import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../../utils/actions';
 
 export default function CartContainer() {
   // Create state variables for cart data and cartOpen
@@ -24,7 +19,8 @@ export default function CartContainer() {
   // Create a function to handle closing the cart
   // Create a function to handle removing an item from the cart
   // Create a function to handle updating an item's quantity in the cart
-  const [state, dispatch] = useStoreContext();
+  const initialState = useStoreContext();
+  const [state, dispatch] = useReducer(reducer, initialState)
   const { cart } = state;
   const cartOpen = state.cartOpen;
   const toggleCart = () => {
