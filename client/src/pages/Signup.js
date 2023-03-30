@@ -1,94 +1,70 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../graphql/mutations';
+import Navbar from '../../components/Navbar';
 
-// import components later
-// import hook to get global state later
-// import apollo queries later 
+// Login page component that renders a form to log in a user
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // Define a state for form validation errors (useState hook)
+  const [errors, setErrors] = useState(null);
+  // Define the loginUser mutation (useMutation hook) and pass in the LOGIN_USER mutation
+  const [loginUser] = useMutation(LOGIN_USER);
 
-export default function Signup() {
-  // Define initial form state (useState hook)
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    admin: false,
-  });
-
-  // Define a state for form validation
-  const [errors, setErrors] = useState({});
-
-  // Define the form from DOM
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // execute apollo mutation with form data
+  // handleFormSubmit function to execute loginUser mutation and handle errors
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await loginUser({ variables: { email, password } });
+      // Set global state with user data
+      console.log('User data:', data);
+    } catch (error) {
+      setErrors(error.message);
+    }
   };
 
-  // Define a function to handle form validation
-  const validateForm = () => {
-    // add validation logic
+  // handleInputChange function to update state based on form input changes 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    // name will be either 'email' or 'password'
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
   };
 
-  // Define a function to handle form input changes
-  const handleChange = (e) => {
-    const { id, type, checked, value } = e.target;
-    const newValue = type === 'checkbox' ? checked : value;
-    setFormData((prev) => ({ ...prev, [id]: newValue }));
-  };
-
+  // Render the login form with a link to the signup page and a button to submit the form 
   return (
     <div>
-      <Link to="/login">← Go to Login</Link>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            className="form-control"
-            id="username"
-            aria-describedby="username"
-            placeholder="Enter username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email address</label>
+      <Navbar />
+      <Link to="/signup">← Go to Signup</Link>
+      <h2>Login</h2>
+      <form onSubmit={handleFormSubmit}>
+        <div>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
-            className="form-control"
             id="email"
-            aria-describedby="email"
-            placeholder="Enter email"
-            value={formData.email}
-            onChange={handleChange}
+            name="email"
+            value={email}
+            onChange={handleInputChange}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
+        <div>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
-            className="form-control"
             id="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
+            name="password"
+            value={password}
+            onChange={handleInputChange}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="admin" className="form-check-label">
-            Admin
-          </label>
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="admin"
-            checked={formData.admin}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        {errors && <p>{errors}</p>}
+        <button type="submit">Login</button>
       </form>
     </div>
   );

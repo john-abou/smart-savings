@@ -20,6 +20,7 @@ const UserDashboard = () => {
         <nav>
           <ul>
             <li>
+              {/* // Link to the Products page */}
               <Link to="/products">Products</Link>
             </li>
           </ul>
