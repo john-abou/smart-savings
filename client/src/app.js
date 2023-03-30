@@ -10,15 +10,33 @@ import Signup from './pages/Signup';
 import ProductPage from './pages/Product';
 import Purchased from './pages/Purchased';
 import Wildcard from './pages/404';
-import ProductContainer from './components/User/ProductContainer';
+//import ProductContainer from './components/user/ProductContainer';
 import UserHome from './pages/user/Userhome';
 
-// Construct the Apollo client
+const PORT = process.env.PORT || 3001;
+
+let graphqlPath = `http://localhost:${PORT}/graphql`;
+
+if (process.env.NODE_ENV === "production") {
+  graphqlPath = "/graphql";
+}
+const httpLink = createHttpLink({
+  uri: graphqlPath,
+});
+
 const client = new ApolloClient({
-  uri: '/graphql',
+  link: httpLink,
   cache: new InMemoryCache(),
 });
 
+
+// Construct the Apollo client
+/* const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+}); */
+
+console.log(client);
 
 export default function App() {
   return (
@@ -27,10 +45,10 @@ export default function App() {
         <Router>
           <div>
             <Routes>
-              <Route 
-                  path="/" 
-                  element={<UserHome />}
-                />
+              <Route
+                path="/"
+                element={<UserHome />}
+              />
               <Route
                 path="/login"
                 element={<Login />}

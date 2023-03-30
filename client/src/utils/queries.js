@@ -30,18 +30,16 @@ export const QUERY_PRODUCTS = gql`
 
 // QUERY_ALL_PRODUCTS returns a list of all products with their _id, name, description, price, quantity, image, and the _id of their associated category
 export const QUERY_ALL_PRODUCTS = gql`
-  {
-    products {
-      _id
-      name
-      description
-      price
-      quantity
-      category {
-        name
-      }
-    }
+query Products {
+  products {
+    _id
+    name
+    description
+    price
+    quantity
+    image
   }
+}
 `;
 
 // QUERY_CATEGORIES returns a list of all categories with their _id and name

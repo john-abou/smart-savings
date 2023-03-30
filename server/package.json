@@ -22,7 +22,7 @@
     "puppeteer-extra": "^3.3.4",
     "puppeteer-extra-plugin-stealth": "^2.11.1",
     "stripe": "^8.67.0",
-    "validator": "13.9"
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
