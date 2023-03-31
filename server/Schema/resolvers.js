@@ -118,7 +118,26 @@ const resolvers = {
 
       return updatedProduct;
 
+    },
+
+    updateProduct: async (parent, { productId, name, description, price, quantity }, context) => {
+
+      const updatedProduct = await Product.findOneAndUpdate(
+        { _id: productId },
+        { $set: { name, description, price, quantity } },
+        { new: true }
+      );
+      return updatedProduct;
+    },
+
+    deleteProduct: async (parent, { productId }, context) => {
+      const deleteProduct = await Product.findOneAndDelete(
+        { _id: productId },
+        { new: true }
+      );
+      return deleteProduct;
     }
+
   }
 };
 
