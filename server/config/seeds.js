@@ -19,8 +19,8 @@ db.once('open', async () => {
       name: 'Toilet Paper',
       category: categories[0]._id,
       description:
-        'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
-      image: 'toilet-paper.jpg',
+        'Bathroom Tissue. Facial Tissue. Paper Towels. Napkins. There’s a Royale for every room.',
+      image: 'https://assets.shop.loblaws.ca/products/21363770/b2/en/front/21363770_front_a06_@2.png',
       price: 7.99,
       quantity: 20,
       AmazonHistory: {
@@ -41,7 +41,7 @@ db.once('open', async () => {
       category: categories[1]._id,
       description:
         'TIM HORTONS ORIGINAL BLEND IS A PERFECTLY BALANCED, MEDIUM ROAST COFFEE WITH A SMOOTH FINISH.',
-      image: 'tim-hortons.jpg',
+      image: 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/813TwvYFi2L._AC_SX522_.jpg',
       price: 17.99,
       quantity: 40,
       AmazonHistory: {
@@ -62,7 +62,7 @@ db.once('open', async () => {
       category: categories[1]._id,
       description:
         'Clinically proven to build relief and daily protection for sensitive teeth.',
-      image: 'Sensodyne.jpg',
+      image: 'https://i5.walmartimages.ca/images/Large/139/678/6000205139678.jpg',
       price: 4.19,
       quantity: 70,
       AmazonHistory: {

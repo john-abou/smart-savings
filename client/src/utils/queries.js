@@ -18,6 +18,38 @@ export const QUERY_PRODUCTS = gql`
   }
 `;
 
+
+export const QUERY_SINGLE_PRODUCT = gql`
+query GetProductById($id: ID!) {
+  getProductById(_id: $id) {
+    _id
+    name
+    description
+    price
+    quantity
+    image
+    AmazonHistory {
+      priceHistory {
+        price
+        date
+      }
+    }
+    WalmartHistory {
+      priceHistory {
+        price
+        date
+      }
+    }
+    LoblawsHistory {
+      priceHistory {
+        price
+        date
+      }
+    }
+  }
+}
+`;
+
 // QUERY_CHECKOUT takes an array of product _id and returns a Stripe session ID to be used for payment.
 // export const QUERY_CHECKOUT = gql`
 // // getCheckout is a mutation, not a query to do a GET request for  data from the server

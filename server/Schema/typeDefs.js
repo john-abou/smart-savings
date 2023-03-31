@@ -51,6 +51,7 @@ type Query{
     me:User
     products:[Product]
     categories:[Category]
+    getProductById(_id: ID!): Product
 }
 
 type Mutation{
