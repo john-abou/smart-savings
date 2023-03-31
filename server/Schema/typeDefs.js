@@ -63,6 +63,7 @@ type Mutation {
   addProduct(name: String!, description: String!, price: String!, category: ID!): Product
   removeProduct(productId: ID!): Product
   appendCompetitiorPriceHistory(productId: ID!): Product
+  updateProduct(_id: !, name: String, description: String, price: String, quantity: Int, image: String, category: ID): Product
 }
 
 `;
