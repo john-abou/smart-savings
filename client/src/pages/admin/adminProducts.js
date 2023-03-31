@@ -1,13 +1,14 @@
 // Import React
-import React, { useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 // Import statemanagement hooks and reducers/actions
 import { useStoreContext } from '../../contexts/GlobalContext';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
 // Import apollo hooks and queries
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
-// Import ProductItem component
-import ProductItem from '../../components/User/ProductItem'
+
+import { useMutation } from '@apollo/client';
+import { DELETE_ITEM } from '../../utils/mutations';
 
 import { Link } from 'react-router-dom';
 
@@ -15,6 +16,9 @@ import { Link } from 'react-router-dom';
 
 export default function ProductContainer() {
   const [state, dispatch] = useStoreContext();
+  const [productId, setProductId] = useState('');
+
+  const [deleteProduct] = useMutation(DELETE_ITEM);
 
   const { data }  = useQuery(QUERY_ALL_PRODUCTS);
 
@@ -29,8 +33,9 @@ export default function ProductContainer() {
     }
   }, [data, dispatch]);
 
-  const deleteitem = () => {
-    // TO DO
+  const deleteitem = async (productId) => {
+    await deleteProduct({ variables: { productId } });
+    window.location.replace(`/admin/products`)
   }
 
   return (
@@ -38,7 +43,7 @@ export default function ProductContainer() {
       <div className='row'>
         {
           state.products.map((product) => (
-            <div className='col-sm-12 col-md-6 col-lg-3'>
+            <div className='col-sm-12 col-md-6 col-lg-3' key={product.id}>
             <div className='card'>
               <div className='card-body'>
                   <h5 className='card-title'>{product.name}</h5>
@@ -50,7 +55,7 @@ export default function ProductContainer() {
                     <Link to={`/products/admin/${product._id}`}>
                     <button className='btn btn-primary'>Edit Product</button>
                     </Link>
-                    <button className='btn btn-primary' style={{ marginLeft: "10px" }} onClick={deleteitem}>Delete Product</button>
+                    <button className='btn btn-primary' style={{ marginLeft: "10px" }} onClick={ () => deleteitem(product._id)}>Delete Product</button>
                   </div>
                 </div>
               </div>

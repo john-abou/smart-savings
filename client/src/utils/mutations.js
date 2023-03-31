@@ -154,3 +154,13 @@ mutation Mutation($name: String, $description: String, $price: String, $quantity
   }
 }
 `;
+
+export const DELETE_ITEM = gql`
+mutation Mutation($productId: ID!) {
+  deleteProduct(productId: $productId) {
+    name
+    description
+    price
+  }
+}
+`;
