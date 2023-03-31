@@ -51,8 +51,6 @@ export default function ProductPage() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
     try {
-        console.log(price)
-        console.log(productId)
       const { data } = await updateProduct({ variables: { name, description, price, quantity, productId } });
       // Set global state with user data
       console.log('User data:', data);

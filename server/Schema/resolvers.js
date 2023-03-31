@@ -113,6 +113,14 @@ const resolvers = {
         { new: true }
       );
       return updatedProduct;
+    },
+
+    deleteProduct: async (parent, { productId }, context) => {
+      const deleteProduct = await Product.findOneAndDelete(
+        { _id: productId },
+        { new: true }
+      );
+      return deleteProduct;
     }
 
   }
