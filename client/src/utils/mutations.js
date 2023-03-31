@@ -143,3 +143,14 @@ export const UPDATE_ORDER = gql`
     }
   }
 `;
+
+export const UPDATE_ITEM = gql`
+mutation Mutation($name: String, $description: String, $price: String, $quantity: Int, $productId: ID!) {
+  updateProduct(name: $name, description: $description, price: $price, quantity: $quantity, productId: $productId) {
+    name
+    description
+    price
+    quantity
+  }
+}
+`;
