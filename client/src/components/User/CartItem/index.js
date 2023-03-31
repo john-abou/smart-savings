@@ -4,11 +4,9 @@ import { UPDATE_CART_QUANTITY, REMOVE_FROM_CART } from "../../../utils/actions";
 
 // Import delete mutation and query to get all cart items
 
-export default function CartItem({ item }) {
+export default function CartItem({ product }) {
   // Define state,dispatch from global state hook
   const [state, dispatch] = useStoreContext();
-  // Destructure state from global state hook
-  const { cart } = state;
   // Define Mutations for user -- addToCart, updateCartAmount
   
 
@@ -16,17 +14,17 @@ export default function CartItem({ item }) {
   const removeFromCart = () => {
     dispatch({
       type: REMOVE_FROM_CART,
-      _id: item._id
+      _id: product._id
     })
   };
   
   return (
     <div className="flex-row">
       <div>
-        <img src=""></img>
+        <img src={product.image}></img>
       </div>  
       <div>
-        {item.name}, {item.purchaseQuantity} @ ${item.price}
+        {product.name}, {product.purchaseCount} @ ${product.price}
       </div>
       <div>
         <span

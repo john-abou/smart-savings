@@ -6,22 +6,24 @@ import { TOGGLE_CART } from '../../../utils/actions';
 import './style.css';
 
 export default function CartContainer() {  
-  const initialState = useStoreContext();
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useStoreContext();
   const { cart, cartOpen } = state;
 
+  // Toggle the cart open or closed
   const toggleCart = () => {
     dispatch({ type: TOGGLE_CART });
   };
 
+  // Loop through the cart array and add up the price of each item multiplied by the purchase quantity
   const calculateTotal = () => {
     let sum = 0;
-    for (const item of cart) {
-      sum += item.price * item.purchaseQuantity;
+    for (const product of cart) {
+      sum += product.price * product.purchaseCount;
     }
     return sum.toFixed(2);
   }
 
+  // When the checkout button is clicked, use the cart data to create a new order in the database
   const submitCheckout = async () => {
   };
 
@@ -39,10 +41,10 @@ export default function CartContainer() {
       <h2>Shopping Cart</h2>
       {cart.length ? (
         <div>
-          {cart.map(item => (
+          {cart.map(product => (
             <CartItem
-              key={item._id}
-              item={item}
+              key={product._id}
+              product={product}
               />
           ))}
           <div className="flex-row space-between">
