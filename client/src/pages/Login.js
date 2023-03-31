@@ -20,6 +20,7 @@ export default function Login() {
       const { data } = await loginUser({ variables: { email, password } });
       // Set global state with user data
       console.log('User data:', data);
+      window.location.replace('/');
     } catch (error) {
       setErrors(error.message);
     }
