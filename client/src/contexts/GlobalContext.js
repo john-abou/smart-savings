@@ -1,11 +1,13 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
+import { useProductReducer } from '../utils/reducers';
+
 
 // Create context for global state
 const StoreContext = createContext();
 
 // Create provider component to be wrapped around the app
 const StoreProvider = ({ value = [], ...props }) => {
-  const [store, setStore] = useState({
+  const [state, dispatch] = useProductReducer({
     products: [],
     cart: [],
     admin: false, 
@@ -15,7 +17,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     currentCategory: '',
   });
 
-  return <StoreContext.Provider value={store} {...props} />;
+  return <StoreContext.Provider value={[state, dispatch]} {...props} />;
 }
 
 const useStoreContext = () => {
