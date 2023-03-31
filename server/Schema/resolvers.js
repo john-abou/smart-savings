@@ -19,6 +19,9 @@ const resolvers = {
     products: async () => {
       const productData = await Product.find();
       return productData;
+    },
+    getProductById: async (parent, { _id }) => { 
+      return await Product.findById(_id );
     }
 
   },
