@@ -9,12 +9,12 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   firstName: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   lastName: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   admin: {
@@ -23,7 +23,7 @@ const userSchema = new Schema({
     // enum used to define a list of possible values for the field
     // ['regular', 'admin'] to distinguish between admin and user accounts.
     enum: ['regular', 'admin'],
-    required: true,
+    required: false,
     default: 'regular'
   },  
   email: {
