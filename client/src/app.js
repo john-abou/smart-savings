@@ -58,12 +58,12 @@ export default function App() {
                 element={<Signup />}
               />
               <Route
-                path="/Product"
-                element={<ProductPage />}
-              />
-              <Route
                 path="/purchased"
                 element={<Purchased />}
+              />
+              <Route 
+                path="/products/:id" 
+                element={<ProductPage />} 
               />
               <Route
                 path="/*"
