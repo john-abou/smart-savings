@@ -56,15 +56,15 @@ type Query{
     getProductById(_id: ID!): Product
 }
 
-type Mutation{
-    login(email:String!,password:String!):Auth
-    addUser(username:String!,email:String!,password:String!):Auth
-    addOrder(products:[ID]!):Order
-    addProduct(name:String!,description:String!,price:String!,category:ID!):Order
-    removeProduct(productId:ID!):Order
-    appendCompetitiorPriceHistory(productId:ID!):Product
-    updateProduct(productId:ID!,name:String,description:String,price:String,quantity:Int):Product
+type Mutation {
+  login(email: String!, password: String!): Auth
+  addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+  addOrder(products: [ID]!): Order
+  addProduct(name: String!, description: String!, price: String!, category: ID!): Product
+  removeProduct(productId: ID!): Product
+  appendCompetitiorPriceHistory(productId: ID!): Product
 }
+
 `;
 
 module.exports=typeDefs;

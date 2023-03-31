@@ -1,33 +1,18 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-// import components later
-// import hook to get global state later
-// import apollo queries later 
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
 
 export default function Signup() {
   // Define initial form state (useState hook)
   const [formData, setFormData] = useState({
-    username: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
-    admin: false,
   });
-
-  // Define a state for form validation
-  const [errors, setErrors] = useState({});
-
-  // Define the form from DOM
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // execute apollo mutation with form data
-  };
-
-  // Define a function to handle form validation
-  const validateForm = () => {
-    // add validation logic
-  };
 
   // Define a function to handle form input changes
   const handleChange = (e) => {
@@ -36,24 +21,65 @@ export default function Signup() {
     setFormData((prev) => ({ ...prev, [id]: newValue }));
   };
 
-  // Render  the login page and a button to submit the form
+  // Define a state for form validation
+  const [errors, setErrors] = useState({});
+
+  // Define a function to handle form validation
+  const validateForm = () => {
+    // add validation logic
+  };
+
+  // Define the form from DOM
+  const [addUser, { error }] = useMutation(ADD_USER);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Submit button clicked!');
+    try {
+      const result = await addUser({
+        variables: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          password: formData.password,
+        },
+      });
+      console.log(result);
+      window.location.replace('/');
+    } catch (error) {
+      console.error(error);
+    }
+  };    
+
+  // Render the login page and a button to submit the form
   return (
     <div>
       <Link to="/login">← Go to Login</Link>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="firstName">First Name</label>
           <input
             type="text"
             className="form-control"
-            id="username"
-            aria-describedby="username"
-            placeholder="Enter username"
-            value={formData.username}
+            id="firstName"
+            aria-describedby="firstName"
+            placeholder="Enter first name"
+            value={formData.firstName}
             onChange={handleChange}
           />
         </div>
-        {/* // add email and password inputs */}
+        <div className="form-group">
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="lastName"
+            aria-describedby="lastName"
+            placeholder="Enter last name"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="email">Email address</label>
           <input
@@ -77,19 +103,7 @@ export default function Signup() {
             onChange={handleChange}
           />
         </div>
-        {/* // add admin checkbox input */}
-        <div className="form-group">
-          <label htmlFor="admin" className="form-check-label">
-            Admin
-          </label>
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="admin"
-            checked={formData.admin}
-            onChange={handleChange}
-          />
-        </div>
+        {error && <div className="alert alert-danger">{error.message}</div>}
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
