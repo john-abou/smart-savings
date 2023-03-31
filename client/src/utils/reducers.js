@@ -3,6 +3,7 @@
 import { useReducer } from 'react';
 import {
   UPDATE_PRODUCTS,
+  UPDATE_USERS,
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
   REMOVE_FROM_CART,
@@ -22,7 +23,11 @@ export const reducer = (state, action) => {
         ...state,
         products: [...action.products],
       };
-
+    case UPDATE_USERS:
+      return {
+        ...state,
+        users: [...action.users],
+      };
     case ADD_TO_CART:
       return {
         ...state,

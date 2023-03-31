@@ -143,3 +143,25 @@ export const UPDATE_ORDER = gql`
     }
   }
 `;
+
+// UPDATE_USER - This mutation updates a user's information. It takes firstName, lastName, isAdmin as arguments and returns all user information
+export const UPDATE_USER = gql`
+  mutation updateUser(
+    $firstName: String
+    $lastName: String
+    $isAdmin: Boolean
+  ) {
+    updateUser(
+      firstName: $firstName
+      lastName: $lastName
+      isAdmin: $isAdmin
+    ) {
+      _id
+      firstName
+      lastName
+      email
+      password
+      isAdmin
+    }
+  }
+`; 

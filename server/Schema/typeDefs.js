@@ -6,8 +6,8 @@ type User{
     lastName: String
     admin: String
     _id: ID
-    email: String
-    username: String
+    email: String!
+    password: String!
     orders: [Order]
 }
 
@@ -52,6 +52,7 @@ type Order{
 
 type Query{
     me:User
+    users:[User]
     products:[Product]
     categories:[Category]
     getProductById(_id: ID!): Product
@@ -59,6 +60,7 @@ type Query{
 
 type Mutation{
     login(email:String!,password:String!):Auth
+    updateUser(firstName:String,lastName:String,isAdmin:Boolean):User
     addUser(username:String!,email:String!,password:String!):Auth
     addOrder(products:[ID]!):Order
     addProduct(name:String!,description:String!,price:String!,category:ID!):Order

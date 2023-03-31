@@ -22,7 +22,11 @@ const resolvers = {
     },
     getProductById: async (parent, { _id }) => { 
       return await Product.findById(_id );
-    }
+    },
+    users: async () => {
+      const userData = await User.find();
+      return userData;
+    },
 
   },
   Mutation: {
@@ -76,7 +80,18 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
+    updateUser:
+      async (parent, { firstName, lastName, isAdmin }, context) => {
+        if (context.user) {
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $set: { firstName, lastName, isAdmin } },
+            { new: true }
+          );
+          return updatedUser;
+        }
+        throw new AuthenticationError('You need to be logged in!');
+      },
     appendCompetitiorPriceHistory: async (parent, { productId }, context) => {
       const amazonLink = await Product.findOne({ _id: productId }).select('AmazonHistory.link');
       const walmartLink = await Product.findOne({ _id: productId }).select('WalmartHistory.link');

@@ -14,8 +14,6 @@ export default function AdminHome() {
           <li><Link to="/admin/products">Manage Products</Link></li>
         </ul>
       </div>
-      <div>
-      </div>
     </div>
   )
 }
