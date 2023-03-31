@@ -13,8 +13,7 @@ import ProductItem from '../ProductItem';
 
 
 export default function ProductContainer() {
-  const initialState = useStoreContext();
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useStoreContext();
 
   const { data }  = useQuery(QUERY_ALL_PRODUCTS);
 
