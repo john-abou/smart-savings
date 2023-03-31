@@ -13,6 +13,11 @@ import Wildcard from './pages/404';
 //import ProductContainer from './components/user/ProductContainer';
 import UserHome from './pages/user/Userhome';
 
+import AdminHome from './pages/admin/adminHome';
+import AdminUsers from './pages/admin/adminUsers';
+import AdminProducts from './pages/admin/adminProducts';
+import AdminProductPage from './pages/admin/adminEditProduct';
+
 const PORT = process.env.PORT || 3001;
 
 let graphqlPath = `http://localhost:${PORT}/graphql`;
@@ -41,7 +46,7 @@ export default function App() {
             <Routes>
               <Route
                 path="/"
-                element={<UserHome />}
+                element={<AdminHome />}
               />
               <Route
                 path="/login"
@@ -58,6 +63,18 @@ export default function App() {
               <Route 
                 path="/products/:id" 
                 element={<ProductPage />} 
+              />
+              <Route 
+                path="/admin/users" 
+                element={<AdminUsers />} 
+              />
+              <Route 
+                path="/admin/products" 
+                element={<AdminProducts />} 
+              />
+              <Route 
+                path="/products/admin/:id" 
+                element={<AdminProductPage />} 
               />
               <Route
                 path="/*"
