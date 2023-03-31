@@ -7,7 +7,6 @@ type User{
     admin: String
     _id: ID
     email: String
-    username: String
     orders: [Order]
 }
 
