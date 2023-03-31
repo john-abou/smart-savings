@@ -103,7 +103,18 @@ const resolvers = {
 
       return updatedProduct;
 
+    },
+
+    updateProduct: async (parent, { productId, name, description, price, quantity }, context) => {
+
+      const updatedProduct = await Product.findOneAndUpdate(
+        { _id: productId },
+        { $set: { name, description, price, quantity } },
+        { new: true }
+      );
+      return updatedProduct;
     }
+
   }
 };
 
