@@ -3,14 +3,9 @@ import { useStoreContext } from '../../../contexts/GlobalContext';
 import { reducer } from '../../../utils/reducers';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY, REMOVE_FROM_CART } from '../../../utils/actions';
 
-<<<<<<< HEAD
-
-export default function ProductItem( { product } ) {
-=======
 import { Link } from 'react-router-dom';
 
 export default function ProductItem({ product }) {
->>>>>>> main
   // destructure product properties
   const { name, description, price, image, quantity, category, _id } = product;
 

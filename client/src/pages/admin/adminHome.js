@@ -12,7 +12,6 @@ export default function AdminHome() {
         <ul>
           <li><Link to="/admin/users">Manage Users</Link></li>
           <li><Link to="/admin/products">Manage Products</Link></li>
-          <li><Link to="/admin/orders">View Orders</Link></li>
         </ul>
       </div>
       <div>
