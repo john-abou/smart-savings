@@ -66,6 +66,7 @@ type Mutation{
     updateProduct(productId:ID!,name:String,description:String,price:String,quantity:Int):Product
     deleteProduct(productId:ID!):Product
 }
+
 `;
 
 module.exports=typeDefs;
