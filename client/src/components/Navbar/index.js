@@ -5,6 +5,7 @@ import Auth from '../../utils/auth';
 export default function Navbar() {
   // Determine if the user is loggedIn
   const loggedIn = Auth.loggedIn();
+  console.log(loggedIn)
 
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
@@ -23,7 +24,7 @@ export default function Navbar() {
             </button> 
           </div>
         ) : (
-          <button className='btn btn-outline-primary'>
+          <button className='btn btn-outline-primary' onClick={Auth.logout}>
             <Link to='/logout'>Logout</Link>
           </button>
         )}      

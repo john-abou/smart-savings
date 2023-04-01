@@ -18,11 +18,14 @@ export default function Login() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await loginUser({ variables: { email, password } });
+      console.log('Made it to the Login Form: ', email, password)
+      const response = await loginUser({ variables: { email, password } });
       // Define the JWT from the response
-      const token = data.login.token;
+      const token = response.data.login.token;
+      console.log('Login Form JWT: ', token)
       // Store the JWT in local storage
       Auth.login(token);
+      console.log('Login Form JWT storage successful: ', Auth.loggedIn())
     } catch (error) {
       setErrors(error.message);
     }
