@@ -77,7 +77,74 @@ db.once('open', async () => {
         link: "https://www.loblaws.ca/whitening-plus-tartar-fighting-toothpaste/p/20301179001_EA",
         priceHistory: [{date: "March 1, 2023", price: 3.99}, {date: "March 7, 2023", price: 5.99}, {date: "March 14, 2023", price: 4.19}]
       }
+    },
+
+    {
+      name: 'Tide Pods',
+      category: categories[2]._id,
+      description:
+        'New Tide Pods Ultra OXI laundry detergent pacs. With built-in pre-treaters, Tide Pods Ultra OXI removes even the toughest stains.',
+      image: 'https://images.ctfassets.net/snqjgnra1eqk/5wEfI2jpYi0gglqSzWW1J9/fd6d69075a19fa67ebd4fd4ce4ee1580/Tide_Hagrid_Original_PODS_hero_1920x2287_0329.png?fm=png',
+      price: 24.19,
+      quantity: 70,
+      AmazonHistory: {
+        link: "https://www.amazon.ca/dp/B09PZKHBGP?pd_rd_i=B09PZKHBGP&pf_rd_p=f6bdd6c0-23bc-4750-82f8-87eefeb4cb4e&pf_rd_r=8CZCJPZRJ5CA10SXBDNC&pd_rd_wg=RJDnR&pd_rd_w=vkgS2&pd_rd_r=b7edd6c7-5609-48b7-8575-5081f90160e7",
+        priceHistory: [{date: "March 1, 2023", price: 26.99}, {date: "March 7, 2023", price: 25.59}, {date: "March 14, 2023", price: 26.19}]
+      },
+      WalmartHistory: {
+        link: "https://www.walmart.ca/en/ip/tide-pods-ultra-oxi-laundry-detergent-pacs/6000198099444", 
+        priceHistory: [{date: "March 1, 2023", price: 25.99}, {date: "March 7, 2023", price: 27.59}, {date: "March 14, 2023", price: 31.99}]
+      },
+      LoblawsHistory: {
+        link: "https://www.loblaws.ca/ultra-oxi-liquid-laundry-detergent-pods-61-count/p/21184841_EA",
+        priceHistory: [{date: "March 1, 2023", price: 33.99}, {date: "March 7, 2023", price: 25.99}, {date: "March 14, 2023", price: 24.19}]
+      }
+    },
+
+    {
+      name: 'Dog Food',
+      category: categories[1]._id,
+      description:
+        'PEDIGREE VITALITY+ Adult Roasted Chicken and Vegetable Flavour Food for Dogs is formulated to give dogs all of the energy and nourishment they need to continue living life to the fullest',
+      image: 'https://i5.walmartimages.ca/images/Enlarge/683/106/6000197683106.jpg',
+      price: 23.19,
+      quantity: 70,
+      AmazonHistory: {
+        link: "https://www.amazon.ca/PEDIGREE-High-Protein-Adult-Food/dp/B08QCYQCBM/ref=sr_1_7?crid=368V77OYUP8DQ&keywords=dog+food+pedigree&qid=1680302887&sprefix=dog+food+pedigree%2Caps%2C254&sr=8-7",
+        priceHistory: [{date: "March 1, 2023", price: 16.99}, {date: "March 7, 2023", price: 15.59}, {date: "March 14, 2023", price: 26.19}]
+      },
+      WalmartHistory: {
+        link: "https://www.walmart.ca/en/ip/pedigree-vitality-roasted-chicken-vegetable-flavour-dry-dog-food-8kg/6000016948939", 
+        priceHistory: [{date: "March 1, 2023", price: 25.99}, {date: "March 7, 2023", price: 17.59}, {date: "March 14, 2023", price: 21.99}]
+      },
+      LoblawsHistory: {
+        link: "https://www.loblaws.ca/vitality-roasted-chicken-and-vegetable-flavour-dry/p/20039397001_EA",
+        priceHistory: [{date: "March 1, 2023", price: 23.99}, {date: "March 7, 2023", price: 15.99}, {date: "March 14, 2023", price: 24.19}]
+      }
+    },
+
+    {
+      name: 'Trash Bags',
+      category: categories[0]._id,
+      description:
+        'Count on GLAD bags to measure up to the task. Strong and sturdy, they help you avoid the messiest garbage disasters.',
+      image: 'https://i5.walmartimages.ca/images/Enlarge/811/201/6000202811201.jpg',
+      price: 23.19,
+      quantity: 70,
+      AmazonHistory: {
+        link: "https://www.amazon.ca/Glad-Black-Garbage-Bags-Litres/dp/B00BMBR0PE/ref=sr_1_12?crid=9KVJY44N6QA5&keywords=trash+bags+glad&qid=1680303088&sprefix=trash+bags+glad%2Caps%2C183&sr=8-12",
+        priceHistory: [{date: "March 1, 2023", price: 16.99}, {date: "March 7, 2023", price: 15.59}, {date: "March 14, 2023", price: 26.19}]
+      },
+      WalmartHistory: {
+        link: "https://www.walmart.ca/en/ip/glad-black-garbage-bags-giant-184-litres-40-trash-bags/6000039455638", 
+        priceHistory: [{date: "March 1, 2023", price: 25.99}, {date: "March 7, 2023", price: 17.59}, {date: "March 14, 2023", price: 21.99}]
+      },
+      LoblawsHistory: {
+        link: "https://www.loblaws.ca/black-garbage-bags-giant-184-litres/p/20360876_EA",
+        priceHistory: [{date: "March 1, 2023", price: 23.99}, {date: "March 7, 2023", price: 15.99}, {date: "March 14, 2023", price: 24.19}]
+      }
     }
+
   ]);
 
   console.log('products seeded');

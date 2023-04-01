@@ -177,3 +177,31 @@ mutation Mutation($productId: ID!) {
   }
 }
 `;
+<<<<<<< HEAD
+=======
+
+export const UPDATE_COMP_PRICE_HISTORY = gql`
+mutation Mutation($productId: ID!) {
+  appendCompetitiorPriceHistory(productId: $productId) {
+    AmazonHistory {
+      priceHistory {
+        price
+        date
+      }
+    }
+    WalmartHistory {
+      priceHistory {
+        price
+        date
+      }
+    }
+    LoblawsHistory {
+      priceHistory {
+        price
+        date
+      }
+    }
+  }
+}
+`;
+>>>>>>> b0eede3fcc7a1334d028bf6484a956e389a46d84

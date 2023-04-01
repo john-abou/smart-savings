@@ -5,6 +5,7 @@ import { QUERY_SINGLE_PRODUCT } from '../../utils/queries';
 
 import { useMutation } from '@apollo/client';
 import { UPDATE_ITEM } from '../../utils/mutations';
+import { UPDATE_COMP_PRICE_HISTORY } from '../../utils/mutations';
 
 // import components later
 // import hook to get global state later
@@ -22,6 +23,7 @@ export default function ProductPage() {
     const [errors, setErrors] = useState(null);
 
     const [updateProduct] = useMutation(UPDATE_ITEM);
+    const [updateCompetitorPriceHistory] = useMutation(UPDATE_COMP_PRICE_HISTORY);
 
     const { id } = useParams();
 
@@ -74,16 +76,22 @@ export default function ProductPage() {
         }
     };
 
+    const updateCompPrice = async (productId) => {
+        await updateCompetitorPriceHistory({ variables: { productId } });
+        window.location.replace(`/products/admin/${productId}`)
+      }
+
     return (
         <div className='row'>
             <div>
                 <img src={newproduct.image} className="mx-auto d-block" width="500" height="500"></img>
             </div>
-            <div className='text-center' >
+            <div className='text-center' key={newproduct.id}>
                 <h1>{newproduct.name}</h1>
                 <p>{newproduct.description}</p>
                 <p>Price: CAD ${newproduct.price}</p>
                 <p>Quantity: {newproduct.quantity}</p>
+                <button className='btn btn-primary' onClick={ () => updateCompPrice(newproduct._id)}>Scrape Competitor Prices</button>
             </div>
             <h2 className='text-center' >Edit Product</h2>
             <form onSubmit={handleFormSubmit} className='text-center'>
