@@ -60,7 +60,7 @@ type Query{
 type Mutation{
     login(email:String!,password:String!):Auth
     updateUser(_id: ID!, firstName: String, lastName: String, isAdmin: Boolean!): User!
-    addUser(username:String!,email:String!,password:String!):Auth
+    addUser(firstName:String!,lastName:String!,email:String!,password:String!):Auth
     addOrder(products:[ID]!):Order
     addProduct(name:String!,description:String!,price:String!,category:ID!):Order
     removeProduct(productId:ID!):Order

@@ -48,6 +48,7 @@ export default function Signup() {
       window.location.replace('/');
     } catch (error) {
       console.error(error);
+      console.log(error.message);
     }
   };    
 
