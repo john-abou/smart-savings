@@ -155,7 +155,7 @@ mutation UpdateUser($_id: ID!, $isAdmin: Boolean!) {
     admin
   }
 }
-`;
+`; 
 
 export const UPDATE_ITEM = gql`
 mutation Mutation($name: String, $description: String, $price: String, $quantity: Int, $productId: ID!) {
@@ -177,8 +177,6 @@ mutation Mutation($productId: ID!) {
   }
 }
 `;
-<<<<<<< HEAD
-=======
 
 export const UPDATE_COMP_PRICE_HISTORY = gql`
 mutation Mutation($productId: ID!) {
@@ -204,4 +202,3 @@ mutation Mutation($productId: ID!) {
   }
 }
 `;
->>>>>>> b0eede3fcc7a1334d028bf6484a956e389a46d84
