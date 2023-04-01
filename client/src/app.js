@@ -62,7 +62,11 @@ export default function App() {
             <Routes>
               <Route
                 path="/"
+<<<<<<< HEAD
                 element={<Home />}
+=======
+                element={<UserHome />}
+>>>>>>> main
               />
               <Route
                 path="/login"
