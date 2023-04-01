@@ -1,6 +1,5 @@
-import React, { useReducer, useEffect } from 'react';
+import React from 'react';
 import { useStoreContext } from '../../../contexts/GlobalContext';
-import { reducer } from '../../../utils/reducers';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY, REMOVE_FROM_CART } from '../../../utils/actions';
 
 import { Link } from 'react-router-dom';

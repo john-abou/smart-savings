@@ -18,6 +18,18 @@ export const QUERY_PRODUCTS = gql`
   }
 `;
 
+export const QUERY_USERS = gql`
+query Users {
+  users {
+    email
+    lastName
+    firstName
+    admin
+    _id
+  }
+}
+`;
+
 
 export const QUERY_SINGLE_PRODUCT = gql`
 query GetProductById($id: ID!) {
@@ -106,3 +118,4 @@ export const QUERY_USER = gql`
     }
   }
 `;
+

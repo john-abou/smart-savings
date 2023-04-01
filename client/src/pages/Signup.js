@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 export default function Signup() {
   // Define initial form state (useState hook)
@@ -21,20 +22,11 @@ export default function Signup() {
     setFormData((prev) => ({ ...prev, [id]: newValue }));
   };
 
-  // Define a state for form validation
-  const [errors, setErrors] = useState({});
-
-  // Define a function to handle form validation
-  const validateForm = () => {
-    // add validation logic
-  };
-
   // Define the form from DOM
   const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submit button clicked!');
     try {
       const result = await addUser({
         variables: {
@@ -44,10 +36,10 @@ export default function Signup() {
           password: formData.password,
         },
       });
-      console.log(result);
-      window.location.replace('/');
+      const token = result.data.addUser.token;
+      Auth.login(token);
     } catch (error) {
-      console.error(error);
+      console.log(error.message);
     }
   };    
 

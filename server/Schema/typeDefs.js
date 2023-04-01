@@ -4,7 +4,7 @@ const typeDefs=gql`
 type User{
     firstName: String
     lastName: String
-    admin: String
+    admin: Boolean
     _id: ID
     email: String
     orders: [Order]
@@ -51,6 +51,7 @@ type Order{
 
 type Query{
     me:User
+    users:[User]
     products:[Product]
     categories:[Category]
     getProductById(_id: ID!): Product
@@ -58,7 +59,8 @@ type Query{
 
 type Mutation{
     login(email:String!,password:String!):Auth
-    addUser(username:String!,email:String!,password:String!):Auth
+    updateUser(_id: ID!, firstName: String, lastName: String, isAdmin: Boolean!): User!
+    addUser(firstName:String!,lastName:String!,email:String!,password:String!):Auth
     addOrder(products:[ID]!):Order
     addProduct(name:String!,description:String!,price:String!,category:ID!):Order
     removeProduct(productId:ID!):Order
@@ -66,7 +68,6 @@ type Mutation{
     updateProduct(productId:ID!,name:String,description:String,price:String,quantity:Int):Product
     deleteProduct(productId:ID!):Product
 }
-
 `;
 
 module.exports=typeDefs;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import Navbar from '../components/Navbar';
+import Auth from '../utils/auth';
 
 // Login page component that renders a form to log in a user
 export default function Login() {
@@ -17,10 +18,14 @@ export default function Login() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await loginUser({ variables: { email, password } });
-      // Set global state with user data
-      console.log('User data:', data);
-      window.location.replace('/');
+      console.log('Made it to the Login Form: ', email, password)
+      const response = await loginUser({ variables: { email, password } });
+      // Define the JWT from the response
+      const token = response.data.login.token;
+      console.log('Login Form JWT: ', token)
+      // Store the JWT in local storage
+      Auth.login(token);
+      console.log('Login Form JWT storage successful: ', Auth.loggedIn())
     } catch (error) {
       setErrors(error.message);
     }

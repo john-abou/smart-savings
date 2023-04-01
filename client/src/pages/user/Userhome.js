@@ -3,7 +3,9 @@ import Navbar from '../../components/Navbar';
 import ProductContainer from '../../components/User/ProductContainer';
 import CartContainer from '../../components/User/CartContainer'
 
+
 export default function UserHome() {
+  
   return (
     <div className='postiion-relative'>
       <Navbar />

@@ -19,12 +19,11 @@ const userSchema = new Schema({
   },
   admin: {
     // type changed from Boolean to String
-    type: String,
+    type: Boolean,
     // enum used to define a list of possible values for the field
     // ['regular', 'admin'] to distinguish between admin and user accounts.
-    enum: ['regular', 'admin'],
     required: false,
-    default: 'regular'
+    default: false
   },  
   email: {
     type: String,

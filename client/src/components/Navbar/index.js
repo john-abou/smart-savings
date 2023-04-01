@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useStoreContext } from '../../contexts/GlobalContext';
+import Auth from '../../utils/auth';
 
 export default function Navbar() {
-  const initialState = useStoreContext();
-  const {loggedIn} = initialState;
-  // const [state, dispatch] = useReducer(reducer, initialState);
+  // Determine if the user is loggedIn
+  const loggedIn = Auth.loggedIn();
+  console.log(loggedIn)
 
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
@@ -24,7 +24,7 @@ export default function Navbar() {
             </button> 
           </div>
         ) : (
-          <button className='btn btn-primary'>
+          <button className='btn btn-outline-primary' onClick={Auth.logout}>
             <Link to='/logout'>Logout</Link>
           </button>
         )}      
