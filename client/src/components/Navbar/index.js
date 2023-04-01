@@ -5,7 +5,7 @@ import Auth from '../../utils/auth';
 export default function Navbar() {
   // Determine if the user is loggedIn
   const loggedIn = Auth.loggedIn();
-  console.log(loggedIn)
+  console.log('loggedIn boolean: ', loggedIn)
 
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>

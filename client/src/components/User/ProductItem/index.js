@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 
 export default function ProductItem({ product }) {
   // destructure product properties
-  const { name, description, price, image, quantity, category, _id } = product;
+  const { name, description, price, image, category, _id } = product;
+
 
   // Define dispatch from the global state hook and destructure the cart
   const [state, dispatch] = useStoreContext();
-  const { cart } = state;
+  const { cart, products } = state;
 
   // Define a function to handle add to cart, should add item to cart and increase cart count in global state
   const addToCart = () => {
@@ -73,7 +74,7 @@ export default function ProductItem({ product }) {
           </div>
         </div>
         <div className='card-footer'>
-          <small className='text-muted'>Stock: {quantity}</small>
+          <small className='text-muted'>Stock: {product.quantity}</small>
           <small className='text-muted' style={{ marginLeft: "10px" }} >Category: {category}</small>
         </div>
       </div>

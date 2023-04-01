@@ -29,13 +29,9 @@ export default function Signup() {
     e.preventDefault();
     try {
       const result = await addUser({
-        variables: {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          password: formData.password,
-        },
+        variables: { ...formData },
       });
+      console.log('Signing up - result const: ',result);
       const token = result.data.addUser.token;
       Auth.login(token);
     } catch (error) {

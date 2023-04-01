@@ -50,7 +50,7 @@ type Order{
 }
 
 type Query{
-    me:User
+    user(_id:ID!): User
     users:[User]
     products:[Product]
     categories:[Category]

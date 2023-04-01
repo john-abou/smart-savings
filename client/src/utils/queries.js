@@ -86,36 +86,16 @@ query Products {
 }
 `;
 
-// QUERY_CATEGORIES returns a list of all categories with their _id and name
-export const QUERY_CATEGORIES = gql`
-  {
-    categories {
-      _id
-      name
-    }
-  }
-`;
-
 // QUERY_USER returns information about the logged in user including their firstName, lastName, and a list of their orders. Each order includes its _id, purchaseDate, and a list of products with their _id, name, description, price, quantity, and  image
 export const QUERY_USER = gql`
-  {
-    user {
-      firstName
-      lastName
-      admin
-      orders {
-        _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
-      }
-    }
+query User($_id: ID!) {
+  user(_id: $_id) {
+    _id
+    admin
+    email
+    firstName
+    lastName
   }
+}
 `;
 

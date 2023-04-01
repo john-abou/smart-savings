@@ -12,20 +12,19 @@ export default function Login() {
   // Define a state for form validation errors (useState hook)
   const [errors, setErrors] = useState(null);
   // Define the loginUser mutation (useMutation hook) and pass in the LOGIN mutation
-  const [loginUser] = useMutation(LOGIN);
+  const [loginUser, {error, data}] = useMutation(LOGIN);
 
   // handleFormSubmit function to execute loginUser mutation and handle errors
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log('Made it to the Login Form: ', email, password)
       const response = await loginUser({ variables: { email, password } });
+      console.log('Login Form Response: ', response)
       // Define the JWT from the response
       const token = response.data.login.token;
-      console.log('Login Form JWT: ', token)
+      console.log('Login Form Token: ', token)
       // Store the JWT in local storage
       Auth.login(token);
-      console.log('Login Form JWT storage successful: ', Auth.loggedIn())
     } catch (error) {
       setErrors(error.message);
     }

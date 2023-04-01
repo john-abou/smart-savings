@@ -58,6 +58,7 @@ export const ADD_TO_CART = gql`
   mutation addToCart($productId: ID!) {
     addToCart(productId: $productId) {
       _id
+      token
       firstName
       lastName
       cart {
@@ -81,6 +82,7 @@ export const REMOVE_FROM_CART = gql`
   mutation removeFromCart($productId: ID!) {
     removeFromCart(productId: $productId) {
       _id
+      token
       firstName
       lastName
       cart {

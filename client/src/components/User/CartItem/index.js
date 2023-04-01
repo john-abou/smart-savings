@@ -1,6 +1,7 @@
 import React from "react";
 import { useStoreContext } from "../../../contexts/GlobalContext";
 import { UPDATE_CART_QUANTITY, REMOVE_FROM_CART } from "../../../utils/actions";
+import './style.css';
 
 // Import delete mutation and query to get all cart items
 
@@ -21,7 +22,7 @@ export default function CartItem({ product }) {
   return (
     <div className="flex-row">
       <div>
-        <img src={product.image}></img>
+        <img className='cart-img' src={product.image}></img>
       </div>  
       <div>
         {product.name}, {product.purchaseCount} @ ${product.price}
