@@ -63,7 +63,7 @@ export default function ProductItem({ product }) {
           <p className='card-text'>{description}</p>
           <p className='card-text'>CAD: ${price}</p>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <img src={image} width="250" height="250"></img>
+            <img src={image} width="250" height="250" alt={`${name}`}></img>
             <div style={{ marginTop: "10px" }}>
               <button className='btn btn-primary' onClick={removeFromCart}>Remove From Cart</button>
               <button className='btn btn-primary' style={{ marginLeft: "10px" }} onClick={addToCart}>Add to Cart</button>
@@ -71,7 +71,7 @@ export default function ProductItem({ product }) {
           </div>
         </div>
         <div className='card-footer'>
-          <small className='text-muted'>Stock: {quantity}</small>
+          <small className='text-muted'>Stock: {product.quantity}</small>
         </div>
       </div>
     </div>

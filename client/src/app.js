@@ -11,7 +11,7 @@ import ProductPage from './pages/Product';
 import Purchased from './pages/Purchased';
 import Wildcard from './pages/404';
 import AdminHome from './pages/admin/AdminHome';
-import AdminUsers from './pages/admin/AdminUsers';
+import AdminUsers from './pages/admin/adminUsers';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminProductPage from './pages/admin/AdminEditProduct';
 import { setContext } from '@apollo/client/link/context';

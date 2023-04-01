@@ -3,7 +3,7 @@ import { QUERY_USER, QUERY_USERS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
 // Import the userhOME AND ADMINHOME COMPONENTS
-import UserHome from './user/UserHome';
+import UserHome from './user/Userhome';
 import AdminHome from './admin/AdminHome';
 
 export default function Home( ) {
