@@ -33,8 +33,6 @@ export default function ProductItem({ product }) {
     // product.quantity--;
   }
 
-  
-
   const removeFromCart = () => {
     // If the item clicked matches the item in the cart, remove it from the cart
     const productInCart = cart.find( (cartProduct) => cartProduct._id === product._id);
@@ -53,7 +51,6 @@ export default function ProductItem({ product }) {
       });
     }
   }
-
 
   return (
     <div className='col-sm-12 col-md-6 col-lg-3'>
@@ -74,7 +71,6 @@ export default function ProductItem({ product }) {
         </div>
         <div className='card-footer'>
           <small className='text-muted'>Stock: {quantity}</small>
-          <small className='text-muted' style={{ marginLeft: "10px" }} >Category: {category}</small>
         </div>
       </div>
     </div>
