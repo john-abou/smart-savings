@@ -11,8 +11,6 @@ const StoreProvider = ({ value = [], ...props }) => {
     products: [],
     cart: [],
     users: [],
-    admin: false, 
-    loggedIn: false,
     cartOpen: false,
     categories: [],
     currentCategory: '',
