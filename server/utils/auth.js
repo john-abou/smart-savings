@@ -23,6 +23,7 @@ module.exports = {
     } catch {
       console.log('Invalid token');
     }
+    console.log('req.user: ', req.user) // req.user:  { firstName: 'John', email: 'test@test.com', _id: '5f9c1b0b0c1b9c0b8c0c1c1c' }
 
     return req;
   },

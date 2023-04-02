@@ -8,10 +8,14 @@ const { searchLoblaws } = require('../utils/scrape/searchLoblaws');
 
 const resolvers = {
   Query: {
-    me: async (parent, args, context) => {
-      if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
-        return userData;
+    user: async (parent, args, context) => {
+      console.log('CONTEXT IS HERE', context.user);
+      try {
+          const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
+          console.log('After if');
+          return userData;
+      } catch (error) {
+        console.log(error);
       }
       throw new AuthenticationError('Not logged in');
     },
@@ -32,6 +36,7 @@ const resolvers = {
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
+      console.log('User object returned from logging in', user)
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
@@ -39,12 +44,14 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-      const token = signToken(user);
+      const { firstName, _id } = user;
+      const token = signToken({ firstName, email, _id });
       return { token, user };
     },
     addUser: async (parent, args) => {
       const user = await User.create(args);
-      const token = signToken(user);
+      const { firstName, email, _id } = user;
+      const token = signToken({ firstName, email, _id });
       return { token, user };
     },
     addOrder: async (parent, { products }, context) => {
@@ -82,6 +89,11 @@ const resolvers = {
     },
     updateUser:
       async (parent, { _id, isAdmin }, context) => {
+        console.log('Update user', context.user)
+        /*
+        const { firstName, lastName, email, password } = user;
+        console.log('resolver login', user);
+        const token = signToken({ firstName, lastName, email, password}); */
         if (context.user) {
           const updatedUser = await User.findOneAndUpdate(
             { _id },

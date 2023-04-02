@@ -27,8 +27,6 @@ export default function ProductPage() {
 
     const { id } = useParams();
 
-    console.log(id)
-
     const [newproduct, setNewProduct] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
