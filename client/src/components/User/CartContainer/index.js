@@ -38,7 +38,7 @@ export default function CartContainer() {
   return (
     <div className="cart">
       <div className="close" onClick={toggleCart}>[close]</div>
-      <h2>Shopping Cart</h2>
+      <h4 className='mb-4'>Shopping Cart</h4>
       {cart.length ? (
         <div>
           {cart.map(product => (
@@ -47,15 +47,17 @@ export default function CartContainer() {
               product={product}
               />
           ))}
-          <div className="flex-row space-between">
-            <strong>Total: ${calculateTotal()}</strong>
-            <button onClick={submitCheckout}>Checkout </button>
+          <div className='container'>
+            <div className="row mt-4 ">
+              <strong className='col-6'>Total: ${calculateTotal()}</strong>
+              <button className='btn btn-dark col-6' onClick={submitCheckout}>Checkout </button>
+            </div>
           </div>
         </div>
       ) : (
-        <h3>
+        <h6>
           Your cart is empty.
-        </h3>
+        </h6>
       )}
     </div>
   );
