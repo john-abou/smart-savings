@@ -29,6 +29,15 @@ export const reducer = (state, action) => {
         ...state,
         cartOpen: true,
         cart: [...state.cart, action.product],
+        products: state.products.map((product) => {
+          if (product._id === action.product._id) {
+            return {
+              ...product,
+              inCart: true,
+            };
+          }
+          return product;
+        }),
       };
     case UPDATE_CART_QUANTITY:
       return {
@@ -104,7 +113,8 @@ export const reducer = (state, action) => {
           if (product._id === action._id) {
             return {
               ...product,
-              quantity: action.quantity
+              quantity: action.quantity,
+              inCart: false,
             };
           }
           return product;

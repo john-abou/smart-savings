@@ -80,6 +80,7 @@ query Products {
     name
     description
     inStock
+    inCart
     price
     quantity
     image

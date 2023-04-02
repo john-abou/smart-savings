@@ -45,6 +45,10 @@ const productSchema = new Schema({
     type: Boolean,
     default: true
   },
+  inCart: {
+    type: Boolean,
+    default: false
+  },
   AmazonHistory: {
     link: String,
     priceHistory: [priceHistorySchema]
