@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Import React
 import React, { useEffect, useReducer } from 'react';
 // Import statemanagement hooks and reducers/actions
