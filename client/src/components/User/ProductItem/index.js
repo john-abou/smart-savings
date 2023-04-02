@@ -1,8 +1,8 @@
 import React from 'react';
 import { useStoreContext } from '../../../contexts/GlobalContext';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY, CLEAR_CART, ADD_TO_INVENTORY, REMOVE_FROM_INVENTORY, INVENTORY_CHECK } from '../../../utils/actions';
-
 import { Link } from 'react-router-dom';
+import Auth from '../../../utils/auth';
 
 export default function ProductItem({ product }) {
   // destructure product properties
@@ -15,6 +15,11 @@ export default function ProductItem({ product }) {
 
 
   const addToCart = () => {
+    // If the user is not logged in, redirect them to the login page
+    if (!Auth.loggedIn()) {
+      document.location.assign('/login');
+    }
+
     // Determine if the item is in the cart, then add to cart and update quantity
     const productInCart = cart.find( (cartProduct) => cartProduct._id === product._id);
     if (productInCart && productInCart.purchaseCount > 0) {
