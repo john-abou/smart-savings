@@ -133,32 +133,3 @@ export const reducer = (state, action) => {
 export const useProductReducer = (initialState) => {
   return useReducer(reducer, initialState);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//purchaseCount The UPDATE_CART_QUANTITY case in the reducer function handles updating the quantity of a product in the cart. It receives an action with an _id property and a  property, and it maps over the products in the cart, updating the purchaseCount of the product with a matching _id. This ensures that the quantity of the product in the cart is accurately reflected.
