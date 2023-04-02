@@ -39,32 +39,33 @@ export const reducer = (state, action) => {
         };
       }
       return state;
-    case ADD_MULTIPLE_TO_CART:
-      const newCart = [...state.cart, ...action.products];
-      const updatedProducts = state.products.map(product => {
-        const cartItem = newCart.find(item => item._id === product._id);
-        if (cartItem) {
-          product.quantity -= cartItem.quantity;
-        }
-        return product;
-      });
-      return {
-        ...state,
-        cartOpen: true,
-        cart: newCart,
-        products: updatedProducts,
-      };
-      case UPDATE_CART_QUANTITY:
-        return {
-          ...state,
-          cartOpen: true,
-          cart: state.cart.map((product) => {
-            if (action._id === product.product_id) {
-              product.purchaseCount = action.purchaseCount;
-            }
-            return product;
-          }),
-        };
+case ADD_MULTIPLE_TO_CART:
+  const newCart = [...state.cart, ...action.products];
+  const updatedProducts = state.products.map(product => {
+    const cartItem = newCart.find(item => item._id === product._id);
+    if (cartItem) {
+      product.quantity -= cartItem.quantity;
+    }
+    return product;
+  });
+  return {
+    ...state,
+    cartOpen: true,
+    cart: newCart,
+    products: updatedProducts,
+  };
+case UPDATE_CART_QUANTITY:
+  return {
+    ...state,
+    cartOpen: true,
+    cart: state.cart.map((product) => {
+      if (action._id === product.product_id) {
+        product.purchaseCount = action.purchaseCount;
+      }
+      return product;
+    }),
+  };
+
       
     case REMOVE_FROM_CART:
       const product = state.products.find(product => product._id === action._id);
