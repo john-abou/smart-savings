@@ -39,12 +39,6 @@ export default function ProductPage() {
     }
   }, [data]);
 
-  useEffect(() => {
-    if (!isLoading) {
-      console.log(newproduct);
-    }
-  }, [newproduct]);
-
   return (
     <div className='row'>
       <div className="d-flex">

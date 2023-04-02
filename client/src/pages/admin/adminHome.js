@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../../components/Navbar';
 
 export default function AdminHome( admin ) {
   return(
     <div>
-      <Navbar />
       <h1>Welcome to the Admin Dashboard</h1>
       <div>
         <h2>Quick Links:</h2>

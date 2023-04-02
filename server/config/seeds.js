@@ -16,13 +16,13 @@ db.once('open', async () => {
 
   const products = await Product.insertMany([
     {
-      name: 'Toilet Paper',
+      name: 'Royale Toilet Paper',
       category: categories[0]._id,
       description:
         'Bathroom Tissue. Facial Tissue. Paper Towels. Napkins. There’s a Royale for every room.',
       image: 'https://assets.shop.loblaws.ca/products/21363770/b2/en/front/21363770_front_a06_@2.png',
       price: 7.99,
-      quantity: 3,
+      quantity: 13,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -68,7 +68,7 @@ db.once('open', async () => {
         'Clinically proven to build relief and daily protection for sensitive teeth.',
       image: 'https://i5.walmartimages.ca/images/Large/139/678/6000205139678.jpg',
       price: 4.19,
-      quantity: 70,
+      quantity: 99,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -91,8 +91,8 @@ db.once('open', async () => {
       description:
         'New Tide Pods Ultra OXI laundry detergent pacs. With built-in pre-treaters, Tide Pods Ultra OXI removes even the toughest stains.',
       image: 'https://images.ctfassets.net/snqjgnra1eqk/5wEfI2jpYi0gglqSzWW1J9/fd6d69075a19fa67ebd4fd4ce4ee1580/Tide_Hagrid_Original_PODS_hero_1920x2287_0329.png?fm=png',
-      price: 24.19,
-      quantity: 70,
+      price: 24.03,
+      quantity: 120,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -116,7 +116,7 @@ db.once('open', async () => {
         'PEDIGREE VITALITY+ Adult Roasted Chicken and Vegetable Flavour Food for Dogs is formulated to give dogs all of the energy and nourishment they need to continue living life to the fullest',
       image: 'https://i5.walmartimages.ca/images/Enlarge/683/106/6000197683106.jpg',
       price: 23.19,
-      quantity: 70,
+      quantity: 33,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -139,8 +139,8 @@ db.once('open', async () => {
       description:
         'Count on GLAD bags to measure up to the task. Strong and sturdy, they help you avoid the messiest garbage disasters.',
       image: 'https://i5.walmartimages.ca/images/Enlarge/811/201/6000202811201.jpg',
-      price: 23.19,
-      quantity: 70,
+      price: 24.00,
+      quantity: 17,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -154,6 +154,54 @@ db.once('open', async () => {
       LoblawsHistory: {
         link: "https://www.loblaws.ca/black-garbage-bags-giant-184-litres/p/20360876_EA",
         priceHistory: [{date: "March 1, 2023", price: 23.99}, {date: "March 7, 2023", price: 15.99}, {date: "March 14, 2023", price: 24.19}]
+      }
+    },
+
+    {
+      name: 'Dove Bar Soap',
+      category: categories[0]._id,
+      description:
+        'NATURAL NOURISHMENT: Dove Original Beauty Bar helps maintain your skin’s natural moisture barrier, hydration and nourishment',
+      image: 'https://i5.walmartimages.ca/images/Enlarge/900/662/6000200900662.jpg',
+      price: 13.19,
+      quantity: 80,
+      inStock: true,
+      purchaseCount: 0,
+      AmazonHistory: {
+        link: "https://www.amazon.ca/Dove-Beauty-healthy-looking-White-count/dp/B0876WFZLR/ref=sr_1_1_sspa?crid=OST95I0U29J4&keywords=dove+soap&qid=1680463945&sprefix=dove+soap%2Caps%2C138&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzOUJNQVRON0k1NTVGJmVuY3J5cHRlZElkPUEwOTIxODgwMVdFVFRNT1ZHWDE3QSZlbmNyeXB0ZWRBZElkPUEwMTI3NDg5MzRINEYxV0pDREJETyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=",
+        priceHistory: [{date: "March 1, 2023", price: 16.99}, {date: "March 7, 2023", price: 15.59}, {date: "March 14, 2023", price: 12.19}]
+      },
+      WalmartHistory: {
+        link: "https://www.walmart.ca/en/ip/dove-original-deep-moisture-beauty-bar/6000200703319", 
+        priceHistory: [{date: "March 1, 2023", price: 15.99}, {date: "March 7, 2023", price: 17.59}, {date: "March 14, 2023", price: 21.99}]
+      },
+      LoblawsHistory: {
+        link: "https://www.loblaws.ca/beauty-bar-more-moisturizing-than-bar-soap-deep-mo/p/21237519_EA",
+        priceHistory: [{date: "March 1, 2023", price: 13.99}, {date: "March 7, 2023", price: 15.99}, {date: "March 14, 2023", price: 14.19}]
+      }
+    },
+
+    {
+      name: 'Scotch Sponges',
+      category: categories[0]._id,
+      description:
+        'The Scotch-Brite(TM) Heavy Duty Scour Pad is designed for those tough clean-up jobs both inside your home and out',
+      image: 'https://assets.shop.loblaws.ca/products/20854632/b2/en/front/20854632_front_a06_@2.png',
+      price: 3.19,
+      quantity: 20,
+      inStock: true,
+      purchaseCount: 0,
+      AmazonHistory: {
+        link: "https://www.amazon.ca/Scotch-Brite-Heavy-Duty-Scour-Pad/dp/B00565V2AG/ref=sr_1_18?crid=2P7HO1VBGSA2G&keywords=sponges+scotch+4+pack&qid=1680464469&sprefix=sponges+scotch+4+pack%2Caps%2C158&sr=8-18",
+        priceHistory: [{date: "March 1, 2023", price: 6.99}, {date: "March 7, 2023", price: 5.59}, {date: "March 14, 2023", price: 2.19}]
+      },
+      WalmartHistory: {
+        link: "https://www.walmart.ca/en/ip/scotch-brite-heavy-duty-scour-pad/6000016932568", 
+        priceHistory: [{date: "March 1, 2023", price: 5.99}, {date: "March 7, 2023", price: 7.59}, {date: "March 14, 2023", price: 1.99}]
+      },
+      LoblawsHistory: {
+        link: "https://www.loblaws.ca/scour-pad/p/20854632_EA",
+        priceHistory: [{date: "March 1, 2023", price: 3.99}, {date: "March 7, 2023", price: 5.99}, {date: "March 14, 2023", price: 4.19}]
       }
     }
 

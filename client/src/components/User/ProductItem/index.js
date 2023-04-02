@@ -12,8 +12,6 @@ export default function ProductItem({ product }) {
   const [state, dispatch] = useStoreContext();
   const { cart } = state;
 
-
-
   const addToCart = () => {
     // If the user is not logged in, redirect them to the login page
     if (!Auth.loggedIn()) {

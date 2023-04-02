@@ -1,7 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { useProductReducer } from '../utils/reducers';
 
-
 // Create context for global state
 const StoreContext = createContext();
 
