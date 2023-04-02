@@ -1,6 +1,5 @@
-// ***REVIEW THIS FILE**
-
-import { useReducer } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useReducer } from 'react';
 import {
   UPDATE_PRODUCTS,
   UPDATE_USERS,
@@ -16,10 +15,8 @@ import {
   REMOVE_FROM_INVENTORY
 } from './actions';
 
-// The reducer is a function that accepts the current state and an action. It returns a new state based on that action.
 export const reducer = (state, action) => {
   switch (action.type) {
-    // Returns a copy of state with an update products array. We use the action.products property and spread it's contents into the new array.
     case UPDATE_PRODUCTS:
       return {
         ...state,
@@ -31,77 +28,138 @@ export const reducer = (state, action) => {
         users: [...action.users],
       };
     case ADD_TO_CART:
-      return {
-        ...state,
-        cartOpen: true,
-        cart: [...state.cart, action.product],
-      };
+      const productIndex = state.products.findIndex(product => product._id === action.product._id);
+      if (productIndex !== -1 && state.products[productIndex].quantity > 0) {
+        // state.products[productIndex].quantity -= 1;
+        return {
+          ...state,
+          cartOpen: true,
+          cart: [...state.cart, { ...action.product }],
+          products: [...state.products],
+        };
+      }
+      return state;
     case ADD_MULTIPLE_TO_CART:
-      return {
-        ...state,
-        cart: [...state.cart, ...action.products],
-      };
-    // Returns a copy of state, sets the cartOpen to true and maps through the items in the cart.
-    // If the item's `id` matches the `id` that was provided in the action.payload, we update the purchase quantity.
-    case UPDATE_CART_QUANTITY:
+      const newCart = [...state.cart, ...action.products];
+      const updatedProducts = state.products.map(product => {
+        const cartItem = newCart.find(item => item._id === product._id);
+        if (cartItem) {
+          product.quantity -= cartItem.quantity;
+        }
+        return product;
+      });
       return {
         ...state,
         cartOpen: true,
-        cart: state.cart.map((product) => {
-          if (action._id === product._id) {
-            product.purchaseCount = action.purchaseCount
-          }
-          return product;
-        }),
+        cart: newCart,
+        products: updatedProducts,
       };
-
-    // First we iterate through each item in the cart and check to see if the `product._id` matches the `action._id`
-    // If so, we remove it from our cart and set the updated state to a variable called `newState`
+      case UPDATE_CART_QUANTITY:
+        return {
+          ...state,
+          cartOpen: true,
+          cart: state.cart.map((product) => {
+            if (action._id === product.product_id) {
+              product.purchaseCount = action.purchaseCount;
+            }
+            return product;
+          }),
+        };
+      
     case REMOVE_FROM_CART:
-      let newState = state.cart.filter((product) => {
-        return product._id !== action._id;
-      });
-
-      // Then we return a copy of state and check to see if the cart is empty.
-      // If not, we set the cartOpen status to  `true`. Then we return an updated cart array set to the value of `newState`.
+      const product = state.products.find(product => product._id === action._id);
+      if (product) {
+        product.quantity += 1;
+      }
       return {
         ...state,
-        cartOpen: newState.length > 0,
-        cart: newState,
+        cartOpen: state.cart.length > 0,
+        cart: state.cart.filter((product) => product._id !== action._id),
+        products: [...state.products],
       };
-
     case CLEAR_CART:
+      const clearedProducts = state.cart.map(cartItem => {
+        const originalProduct = state.products.find(product => product._id === cartItem._id);
+        if (originalProduct) {
+          originalProduct.quantity += cartItem.quantity;
+        }
+        return originalProduct;
+      });
       return {
         ...state,
         cartOpen: false,
         cart: [],
+        products: clearedProducts,
       };
-
     case TOGGLE_CART:
       return {
         ...state,
         cartOpen: !state.cartOpen,
       };
-
     case UPDATE_CATEGORIES:
       return {
         ...state,
         categories: [...action.categories],
       };
-
     case UPDATE_CURRENT_CATEGORY:
       return {
         ...state,
         currentCategory: action.currentCategory,
       };
-
-    // Return the state as is in the event that the `action.type` passed to our reducer was not accounted for by the developers
-    // This saves us from a crash.
+    case ADD_TO_INVENTORY:
+      const productToUpdateIndex = state.products.findIndex(product => product._id === action.product._id);
+      if (productToUpdateIndex !== -1) {
+        state.products[productToUpdateIndex].quantity += action.quantity;
+        return {
+          ...state,
+          products: [...state.products],
+        };
+      }
+      return state;
+    case REMOVE_FROM_INVENTORY:
+      const productToUpdate = state.products.find(product => product._id === action._id);
+      if (productToUpdate && productToUpdate.quantity >= action.quantity) {
+        productToUpdate.quantity -= action.quantity;
+        return {
+          ...state,
+          products: [...state.products],
+        };
+      }
+      return state;
     default:
       return state;
   }
 };
 
-export function useProductReducer(initialState) {
+export const useProductReducer = (initialState) => {
   return useReducer(reducer, initialState);
-}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// The UPDATE_CART_QUANTITY case in the reducer function handles updating the quantity of a product in the cart. It receives an action with an _id property and a purchaseCount property, and it maps over the products in the cart, updating the purchaseCount of the product with a matching _id. This ensures that the quantity of the product in the cart is accurately reflected.
