@@ -1,6 +1,6 @@
 import React from "react";
 import { useStoreContext } from "../../../contexts/GlobalContext";
-import { UPDATE_CART_QUANTITY, REMOVE_FROM_CART } from "../../../utils/actions";
+import { CLEAR_CART } from "../../../utils/actions";
 import './style.css';
 
 // Import delete mutation and query to get all cart items
@@ -12,17 +12,18 @@ export default function CartItem({ product }) {
   
 
   // Define a function to handle add to cart, should add item to cart and increase cart count
-  const removeFromCart = () => {
+  const clearCart = () => {
     dispatch({
-      type: REMOVE_FROM_CART,
-      _id: product._id
+      type: CLEAR_CART,
+      _id: product._id,
+      quantity: parseInt(product.quantity)
     })
   };
   
   return (
     <div className="flex-row">
       <div>
-        <img className='cart-img' src={product.image}></img>
+        <img className='cart-img' src={product.image} alt='product'></img>
       </div>  
       <div>
         {product.name}, {product.purchaseCount} @ ${product.price}
@@ -31,7 +32,7 @@ export default function CartItem({ product }) {
         <span
           role="img"
           aria-label="X icon"
-          onClick={removeFromCart}
+          onClick={clearCart}
         >
           ❌
         </span>

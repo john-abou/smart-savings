@@ -14,27 +14,12 @@ export default function Home() {
   const user = data?.user || {};
   const admin = user?.admin; */
 
-  const [user, setUser] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-
   const { data } = useQuery(QUERY_USER);
-
-  useEffect(() => {
-    if (data) {
-      setUser(data.user.admin);
-      setIsLoading(false)
-    }
-  }, [data]);
-
-  useEffect(() => {
-    if (!isLoading) {
-      console.log(user);
-    }
-  }, [user]);
+  const user = data?.user || {};
 
   return (
     <div>
-      {user ?
+      {user.admin ?
         <AdminHome /> :
         <UserHome />
       }
