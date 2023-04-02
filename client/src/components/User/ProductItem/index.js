@@ -77,7 +77,7 @@ export default function ProductItem({ product }) {
   }
 
   const displayRemoveButton = () => {
-    // If the item is in the cart, update the style of the button to display
+    // If the item is in the cart, update the style of the button to display the remove button
     const productInCart = cart.find( (cartProduct) => cartProduct._id === product._id);
     if (productInCart) {
       return 'btn btn-primary'
