@@ -29,20 +29,12 @@ const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   
   if (token) {
-    const decodedToken = jwt_decode(token);
-    const user = {
-      id: decodedToken._id,
-      firstName: decodedToken.firstName,
-      email: decodedToken.email,
-    };
-
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : '',
     },
-    user: JSON.stringify(user),
   };
   }
 });
