@@ -16,8 +16,7 @@ import AdminUsers from './pages/admin/adminUsers';
 import AdminProducts from './pages/admin/adminProducts';
 import AdminProductPage from './pages/admin/adminEditProduct';
 import { setContext } from '@apollo/client/link/context';
-import jwt_decode from 'jwt-decode';
-
+import Auth from './utils/auth';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -33,8 +32,6 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-console.log('Auth Link:', authLink)
-
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
@@ -45,49 +42,24 @@ export default function App() {
     <ApolloProvider client={client}>
         <Router>
           <div>
-          <StoreProvider>
+            <StoreProvider>
             <Routes>
-              <Route
-                path="/"
-                element={<Home />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/purchased"
-                element={<Purchased />}
-              />
-              <Route 
-                path="/products/:id" 
-                element={<ProductPage />} 
-              />
-              <Route 
-                path="/admin/users" 
-                element={<AdminUsers />} 
-              />
-              <Route 
-                path="/admin/products" 
-                element={<AdminProducts />} 
-              />
-              <Route 
-                path="/products/admin/:id" 
-                element={<AdminProductPage />} 
-              />
-              <Route
-                path="/*"
-                element={<Wildcard />}
-              />
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/*" element={<Wildcard />} />
+
+              {/* Protected Routes Use the PrivateRoute component to protect the following routes  */}
+              <Route path="/admin" element={(Auth.loggedIn() ? <AdminHome /> : <Login /> )} />
+              <Route path="/admin/products" element={(Auth.loggedIn() ? <AdminProducts /> : <Login /> )} />
+              <Route path="/admin/users" element={(Auth.loggedIn() ? <AdminUsers /> : <Login /> )} />
+              <Route path="/products/admin/:id" element={(Auth.loggedIn() ? <AdminProductPage /> : <Login /> )} />
+              <Route path="/purchased" element={(Auth.loggedIn() ? <Purchased /> : <Login /> )} />
+              <Route path="/products/:id" element={(Auth.loggedIn() ? <ProductPage /> : <Login /> )} />
             </Routes>
             </StoreProvider>
           </div>
         </Router>
     </ApolloProvider>
-
   )
 }
