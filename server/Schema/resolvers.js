@@ -9,7 +9,6 @@ const { searchLoblaws } = require('../utils/scrape/searchLoblaws');
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
-      console.log('CONTEXT IS HERE',context.user);
       try {
           const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
           console.log('After if');

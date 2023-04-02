@@ -15,6 +15,7 @@ import AdminHome from './pages/admin/adminHome';
 import AdminUsers from './pages/admin/adminUsers';
 import AdminProducts from './pages/admin/adminProducts';
 import AdminProductPage from './pages/admin/adminEditProduct';
+import Navbar from './components/Navbar';
 import { setContext } from '@apollo/client/link/context';
 import Auth from './utils/auth';
 
@@ -43,6 +44,7 @@ export default function App() {
         <Router>
           <div>
             <StoreProvider>
+            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />

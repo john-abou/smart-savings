@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
-import Navbar from '../components/Navbar';
 import Auth from '../utils/auth';
 
 // Login page component that renders a form to log in a user
@@ -44,7 +43,6 @@ export default function Login() {
   // Render the login form with a link to the signup page and a button to submit the form 
   return (
     <div>
-      <Navbar />
       <Link to="/signup">← Go to Signup</Link>
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>

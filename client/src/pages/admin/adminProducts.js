@@ -61,7 +61,6 @@ export default function ProductContainer() {
               </div>
               <div className='card-footer'>
                 <small className='text-muted'>Stock: {product.quantity}</small>
-                <small className='text-muted' style={{ marginLeft: "10px" }} >Category: {product.category}</small>
               </div>
             </div>
           </div>

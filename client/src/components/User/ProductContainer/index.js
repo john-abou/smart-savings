@@ -11,7 +11,6 @@ import { QUERY_ALL_PRODUCTS } from '../../../utils/queries';
 import ProductItem from '../ProductItem';
 
 
-
 export default function ProductContainer() {
   const [state, dispatch] = useStoreContext();
 
