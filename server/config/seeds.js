@@ -175,6 +175,7 @@ db.once('open', async () => {
   await User.create({
     firstName: 'John',
     lastName: 'Abou',
+    admin: true,
     email: 'jabou@test.com',
     password: 'password12345'
   });

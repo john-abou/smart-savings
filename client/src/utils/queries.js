@@ -88,13 +88,13 @@ query Products {
 
 // QUERY_USER returns information about the logged in user including their firstName, lastName, and a list of their orders. Each order includes its _id, purchaseDate, and a list of products with their _id, name, description, price, quantity, and  image
 export const QUERY_USER = gql`
-query user ($_id: ID!) {
-  user (_id: $_id) {
-    _id
-    admin
-    email
+query Query {
+  user {
     firstName
     lastName
+    admin
+    _id
+    email
   }
 }
 `;
