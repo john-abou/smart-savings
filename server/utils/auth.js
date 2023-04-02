@@ -7,12 +7,10 @@ module.exports = {
   authMiddleware: function ({ req }) {
     // allows token to be sent via req.body, req.query, or headers
     let token = req.body.token || req.query.token || req.headers.authorization;
-    console.log('headers:', req.headers)
-    
+
     // ["Bearer", "<tokenvalue>"]
     if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
-      console.log('TOKEN IS HERE -middleware', token);
     }
 
     if (!token) {
@@ -25,6 +23,7 @@ module.exports = {
     } catch {
       console.log('Invalid token');
     }
+    console.log('req.user: ', req.user) // req.user:  { firstName: 'John', email: 'test@test.com', _id: '5f9c1b0b0c1b9c0b8c0c1c1c' }
 
     return req;
   },
