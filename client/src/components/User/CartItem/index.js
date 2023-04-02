@@ -21,7 +21,7 @@ export default function CartItem({ product }) {
   };
   
   return (
-    <div className="container">
+    <div className="container my-3">
       <div className="row">
         <div className="col-2 me-2">
           <img className='cart-img' src={product.image} alt='product'></img>
