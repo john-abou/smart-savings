@@ -4,7 +4,7 @@ const secret = 'mysecretsshhhhh';
 const expiration = '2h';
 
 module.exports = {
-  authMiddleware: function ({ req }) {
+  authMiddleware: async function ({ req, res, next}) {
     // allows token to be sent via req.body, req.query, or headers
     let token = req.body.token || req.query.token || req.headers.authorization;
 
@@ -17,12 +17,14 @@ module.exports = {
       return req;
     }
 
-    try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
+    if (token) {
+      try {
+        // Decode the JWT token and get the user data
+        const { data } = jwt.verify(token, secret, { maxAge: expiration });
+        req.user = data;
     } catch {
       console.log('Invalid token');
-    }
+    }}
     console.log('req.user: ', req.user) // req.user:  { firstName: 'John', email: 'test@test.com', _id: '5f9c1b0b0c1b9c0b8c0c1c1c' }
 
     return req;

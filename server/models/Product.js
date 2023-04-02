@@ -41,6 +41,14 @@ const productSchema = new Schema({
     ref: 'Category',
     required: false
   },
+  inStock: {
+    type: Boolean,
+    default: true
+  },
+  inCart: {
+    type: Boolean,
+    default: false
+  },
   AmazonHistory: {
     link: String,
     priceHistory: [priceHistorySchema]

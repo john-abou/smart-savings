@@ -79,6 +79,8 @@ query Products {
     _id
     name
     description
+    inStock
+    inCart
     price
     quantity
     image
