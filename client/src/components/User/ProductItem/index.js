@@ -1,17 +1,19 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useStoreContext } from '../../../contexts/GlobalContext';
-import { ADD_TO_CART, UPDATE_CART_QUANTITY, CLEAR_CART, ADD_TO_INVENTORY, REMOVE_FROM_INVENTORY } from '../../../utils/actions';
+import { ADD_TO_CART, UPDATE_CART_QUANTITY, CLEAR_CART, ADD_TO_INVENTORY, REMOVE_FROM_INVENTORY, INVENTORY_CHECK } from '../../../utils/actions';
 
 import { Link } from 'react-router-dom';
 
 export default function ProductItem({ product }) {
   // destructure product properties
-  const { name, description, price, quantity, image, _id } = product;
+  const { name, description, price, quantity, inStock, image, _id } = product;
 
   // Define dispatch from the global state hook and destructure the cart
   const [state, dispatch] = useStoreContext();
   const { cart, products } = state;
-  console.log('cart', cart)
+  console.log('cart', products)
+  console.log('name', name)
+  console.log('instock', inStock)
 
   // Define a function to handle add to cart, should add item to cart and increase cart count in global state
   const addToCart = () => {
@@ -30,10 +32,16 @@ export default function ProductItem({ product }) {
         product: { ...product, purchaseCount: 1 }
       });
     }
+
+    
     dispatch({
       type: REMOVE_FROM_INVENTORY,
       _id: product._id,
       quantity: parseInt(product.quantity) - 1
+    })
+    dispatch({
+      type: INVENTORY_CHECK,
+      _id: product._id
     })
   }
 
@@ -92,13 +100,18 @@ export default function ProductItem({ product }) {
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <img src={image} width="250" height="250" alt={`${name}`}></img>
             <div style={{ marginTop: "10px" }}>
-              <button className='btn btn-primary' onClick={removeFromCart}  >Remove From Cart</button>
-              <button className='btn btn-primary' style={{ marginLeft: "10px" }} onClick={addToCart}>Add to Cart</button>
+              <button className='btn btn-primary' onClick={removeFromCart} >Remove From Cart</button>
+              <button className='btn btn-primary' style={{ marginLeft: "10px" }} onClick={addToCart} disabled={!inStock}>Add to Cart</button>
             </div>
           </div>
         </div>
         <div className='card-footer'>
-          <small className='text-muted'>Stock: {quantity}</small>
+          <small className='text-muted'>Inventory: {quantity} </small>
+          {!inStock ? (
+            <small className='text-muted' style={{ marginLeft: "10px" }}>Out of Stock</small>
+          ) : (
+            <small className='text-muted' style={{ marginLeft: "10px" }}></small>
+          )}
         </div>
       </div>
     </div>

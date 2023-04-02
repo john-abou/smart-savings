@@ -8,6 +8,7 @@ import {
   CLEAR_CART,
   TOGGLE_CART,
   ADD_TO_INVENTORY,
+  INVENTORY_CHECK,
   REMOVE_FROM_INVENTORY
 } from './actions';
 
@@ -36,6 +37,28 @@ export const reducer = (state, action) => {
         cart: state.cart.map((product) => {
           if (action._id === product._id) {
             product.purchaseCount = action.purchaseCount
+          }
+          return product;
+        }),
+      };
+    case INVENTORY_CHECK:
+      // Find the item clicked from the products array. Determine if the current quantity is 0.
+      // If the current quantity is 0, set product.inStock = false, otherwise it should be set to true
+      return {
+        ...state,
+        products: state.products.map((product) => {
+          if (product._id === action._id) {
+            if (product.quantity === 0) {
+              return {
+                ...product,
+                inStock: false
+              };
+            } else {
+              return {
+                ...product,
+                inStock: true
+              };
+            }
           }
           return product;
         }),

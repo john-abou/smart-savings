@@ -31,6 +31,7 @@ type Product{
     description:String
     price:String
     quantity:Int
+    inStock: Boolean
     image:String
     category:Category
     AmazonHistory: Competition
