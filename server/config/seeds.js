@@ -16,7 +16,7 @@ db.once('open', async () => {
 
   const products = await Product.insertMany([
     {
-      name: 'Toilet Paper',
+      name: 'Royale Original Toilet Paper, 12 equal 24 Rolls',
       category: categories[0]._id,
       description:
         'Bathroom Tissue. Facial Tissue. Paper Towels. Napkins. There’s a Royale for every room.',
@@ -86,10 +86,10 @@ db.once('open', async () => {
     },
 
     {
-      name: 'Tide Pods',
+      name: 'Tide PODS® Laundry Detergent Original Scent',
       category: categories[2]._id,
       description:
-        'New Tide Pods Ultra OXI laundry detergent pacs. With built-in pre-treaters, Tide Pods Ultra OXI removes even the toughest stains.',
+        'Combining concentrated detergents and powerful stain removers into one convenient laundry pac, Tide 3-in-1 PODS pacs offer a powerful clean that works on 100% of common stains, even in cold.',
       image: 'https://images.ctfassets.net/snqjgnra1eqk/5wEfI2jpYi0gglqSzWW1J9/fd6d69075a19fa67ebd4fd4ce4ee1580/Tide_Hagrid_Original_PODS_hero_1920x2287_0329.png?fm=png',
       price: 24.19,
       quantity: 70,
@@ -134,7 +134,7 @@ db.once('open', async () => {
     },
 
     {
-      name: 'Trash Bags',
+      name: 'Glad Black Garbage Bags - Regular 74 Litres - 40 Trash Bags',
       category: categories[0]._id,
       description:
         'Count on GLAD bags to measure up to the task. Strong and sturdy, they help you avoid the messiest garbage disasters.',

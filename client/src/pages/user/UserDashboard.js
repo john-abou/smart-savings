@@ -3,25 +3,27 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { ProductList } from '../components';
 
-// Check if user is logged in before rendering the UserDashboard component by accessing the isLoggedIn property from the Redux store using the useSelector hook
 const UserDashboard = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
 
-  //  If the user is not logged in, it renders a message prompting them to login before accessing the page   
   if (!isLoggedIn) {
-    return <div>You need to be logged in to access this page.</div>;
+    return (
+      <div style={{ textAlign: 'center', fontSize: '2rem', marginTop: '5rem' }}>
+        You need to be logged in to access this page.
+      </div>
+    );
   }
 
-  // If the user is logged in, it renders the UserDashboard component with a link to the Products page and a Route to the ProductList component 
   return (
-    <div>
-      <h1>User Dashboard</h1>
+    <div style={{ padding: '2rem' }}>
+      <h1 style={{ fontSize: '3rem', marginBottom: '2rem' }}>User Dashboard</h1>
       <Router>
-        <nav>
-          <ul>
-            <li>
-              {/* // Link to the Products page */}
-              <Link to="/products">Products</Link>
+        <nav style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+          <ul style={{ listStyle: 'none', display: 'flex', margin: '0', padding: '0' }}>
+            <li style={{ marginRight: '2rem' }}>
+              <Link to="/products" style={{ fontSize: '2rem', color: '#333', textDecoration: 'none' }}>
+                Products
+              </Link>
             </li>
           </ul>
         </nav>
