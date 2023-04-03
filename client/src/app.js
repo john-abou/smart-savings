@@ -11,7 +11,7 @@ import Signup from './pages/Signup';
 import ProductPage from './pages/Product';
 import Purchased from './pages/Purchased';
 import Wildcard from './pages/404';
-import AdminHome from './pages/admin/adminHome';
+import AdminHome from './pages/admin/AdminHome';
 import AdminUsers from './pages/admin/adminUsers';
 import AdminProducts from './pages/admin/adminProducts';
 import AdminProductPage from './pages/admin/adminEditProduct';

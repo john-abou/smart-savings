@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useReducer } from 'react';
 import { reducer } from '../../../utils/reducers'
 import { useStoreContext } from '../../../contexts/GlobalContext';

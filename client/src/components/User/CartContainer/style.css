@@ -1,6 +1,6 @@
 .cart-closed {
-  position: fixed;
-  top: 6%;
+  position: absolute !important;
+  top: 1% !important;
   right: 1%;
   font-size: 2rem;
   cursor: pointer;
@@ -10,8 +10,8 @@
 }
 
 .cart {
-  position: fixed;
-  top: 6%;
+  position: absolute !important;
+  top: 1% !important;
   right: 1%;
   min-width: 30%;
   max-width: 35%;
