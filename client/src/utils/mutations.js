@@ -204,3 +204,12 @@ mutation Mutation($productId: ID!) {
   }
 }
 `;
+
+export const ADD_PRODUCT = gql`
+mutation Mutation($name: String!, $price: String!) {
+  addProduct(name: $name, price: $price) {
+    name
+    price
+  }
+}
+`;

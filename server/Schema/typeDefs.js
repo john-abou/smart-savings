@@ -64,7 +64,7 @@ type Mutation{
     updateUser(_id: ID!, firstName: String, lastName: String, isAdmin: Boolean!): User!
     addUser(firstName:String!,lastName:String!,email:String!,password:String!):Auth
     addOrder(products:[ID]!):Order
-    addProduct(name:String!,description:String!,price:String!,category:ID!):Order
+    addProduct(name:String!,description:String,price:String!,quantity:Int):Product
     removeProduct(productId:ID!):Order
     appendCompetitiorPriceHistory(productId:ID!):Product
     updateProduct(productId:ID!,name:String,description:String,price:String,quantity:Int):Product
