@@ -59,6 +59,7 @@ export default function App() {
               <Route path="/products/admin/:id" element={(Auth.loggedIn() ? <AdminProductPage /> : <Login /> )} />
               <Route path="/purchased" element={(Auth.loggedIn() ? <Purchased /> : <Login /> )} />
               <Route path="/products/:id" element={(Auth.loggedIn() ? <ProductPage /> : <Login /> )} />
+              <Route path="/admin/products/add" element={(Auth.loggedIn() ? <AdminAddProductPage /> : <Login /> )} />
             </Routes>
             </StoreProvider>
           </div>

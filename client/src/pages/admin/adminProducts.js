@@ -37,7 +37,9 @@ export default function ProductContainer() {
   return (
   <section id='products' className='container-fluid'>
     <div className='text-center'>
+      <Link to='/admin/products/add'>
       <button className='btn btn-primary' onClick={handleAdd}>Add to Cart</button>
+      </Link>
     </div>
     <div className='row'>
       {state.products.map((product) => (

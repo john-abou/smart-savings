@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useMutation } from '@apollo/client';
-import { ADD_ITEM } from '../../utils/mutations';
+import { ADD_PRODUCT} from '../../utils/mutations';
 
 export default function AdminAddProductPage () {
   const [name, setName] = useState('');
@@ -10,7 +10,7 @@ export default function AdminAddProductPage () {
 
   const [errors, setErrors] = useState(null);
 
-  const [addProduct] = useMutation(ADD_ITEM);
+  const [addProduct] = useMutation(ADD_PRODUCT);
 
   const [isLoading, setIsLoading] = useState(true);
 
