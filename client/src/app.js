@@ -18,6 +18,7 @@ import AdminProductPage from './pages/admin/adminEditProduct';
 import Navbar from './components/Navbar';
 import { setContext } from '@apollo/client/link/context';
 import Auth from './utils/auth';
+import '../public/styles.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',

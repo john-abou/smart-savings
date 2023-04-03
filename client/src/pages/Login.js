@@ -42,7 +42,7 @@ export default function Login() {
 
   // Render the login form with a link to the signup page and a button to submit the form 
   return (
-    <div>
+    <div id='login'>
       <Link to="/signup">← Go to Signup</Link>
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
