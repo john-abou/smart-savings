@@ -43,7 +43,7 @@ export default function ProductContainer() {
   <section id='products' className='container-fluid'>
     <div className='row'>
       {state.products.map((product) => (
-        <div className='col-sm-12 col-md-6 col-lg-3' key={product.id}>
+        <div className='col-sm-12 col-md-6 col-lg-3 my-2' key={product.id}>
           <div className='card'>
             <div className='card-body'>
               <Link to={`/products/${product._id}`}>
