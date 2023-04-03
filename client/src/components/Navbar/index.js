@@ -11,7 +11,7 @@ export default function Navbar() {
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <div className='container-fluid d-flex flex-row justify-content-between'>
         <Link className='navbar-brand' to='/'>
-          Smart Savings
+        Puppeteer's Bazaar
         </Link>
         { /* Render login/signup or logout based on user state */}
         {!loggedIn ? (
