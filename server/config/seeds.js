@@ -16,7 +16,7 @@ db.once('open', async () => {
 
   const products = await Product.insertMany([
     {
-      name: 'Royale Toilet Paper',
+      name: 'Royale Original Toilet Paper, 12 equal 24 Roll',
       category: categories[0]._id,
       description:
         'Bathroom Tissue. Facial Tissue. Paper Towels. Napkins. There’s a Royale for every room.',
@@ -42,7 +42,7 @@ db.once('open', async () => {
       name: 'Tim Hortons Coffee',
       category: categories[1]._id,
       description:
-        'TIM HORTONS ORIGINAL BLEND IS A PERFECTLY BALANCED, MEDIUM ROAST COFFEE WITH A SMOOTH FINISH.',
+        'Tim Hortons Original Blend is a Perfectly Balanced, Medium Roast Coffee with a Smooth Finish.',
       image: 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/813TwvYFi2L._AC_SX522_.jpg',
       price: 17.99,
       quantity: 40,
@@ -86,10 +86,10 @@ db.once('open', async () => {
     },
 
     {
-      name: 'Tide Pods',
+      name: 'Tide PODS® Laundry Detergent',
       category: categories[2]._id,
       description:
-        'New Tide Pods Ultra OXI laundry detergent pacs. With built-in pre-treaters, Tide Pods Ultra OXI removes even the toughest stains.',
+        'Tide PODS® Original laundry detergent pacs offer a powerful clean that works on 100% of common stains, even in cold.',
       image: 'https://images.ctfassets.net/snqjgnra1eqk/5wEfI2jpYi0gglqSzWW1J9/fd6d69075a19fa67ebd4fd4ce4ee1580/Tide_Hagrid_Original_PODS_hero_1920x2287_0329.png?fm=png',
       price: 24.03,
       quantity: 120,
@@ -110,7 +110,7 @@ db.once('open', async () => {
     },
 
     {
-      name: 'Dog Food',
+      name: 'Pedigree Vitality+ Roasted Chicken & Vegetable Flavour Dry Dog Food',
       category: categories[1]._id,
       description:
         'PEDIGREE VITALITY+ Adult Roasted Chicken and Vegetable Flavour Food for Dogs is formulated to give dogs all of the energy and nourishment they need to continue living life to the fullest',
@@ -134,10 +134,10 @@ db.once('open', async () => {
     },
 
     {
-      name: 'Trash Bags',
+      name: 'Glad Black Garbage Bags - Regular 74 Litres - 40 Trash Bags',
       category: categories[0]._id,
       description:
-        'Count on GLAD bags to measure up to the task. Strong and sturdy, they help you avoid the messiest garbage disasters.',
+        'Count on GLAD outdoor bags to measure up to the task. Strong and sturdy, avoid the messiest garbage disasters. And with the Easy-Tie flaps you just tie, grab, toss, and you’re done.',
       image: 'https://i5.walmartimages.ca/images/Enlarge/811/201/6000202811201.jpg',
       price: 24.00,
       quantity: 17,
@@ -158,10 +158,10 @@ db.once('open', async () => {
     },
 
     {
-      name: 'Dove Bar Soap',
+      name: 'Dove Original Deep Moisture Beauty Bar',
       category: categories[0]._id,
       description:
-        'NATURAL NOURISHMENT: Dove Original Beauty Bar helps maintain your skin’s natural moisture barrier, hydration and nourishment',
+        'Bring superior care with Dove Original Beauty Bar. Enjoy soft, smooth, and healthy-looking skin with the gentle cleansing formula enriched with our signature ¼ moisturizing cream.',
       image: 'https://i5.walmartimages.ca/images/Enlarge/900/662/6000200900662.jpg',
       price: 13.19,
       quantity: 80,
@@ -182,10 +182,10 @@ db.once('open', async () => {
     },
 
     {
-      name: 'Scotch Sponges',
+      name: 'Scotch-Brite® Heavy Duty Scour Pad',
       category: categories[0]._id,
       description:
-        'The Scotch-Brite(TM) Heavy Duty Scour Pad is designed for those tough clean-up jobs both inside your home and out',
+        'Scotch-Brite® Heavy Duty Scour Pad is for when its time to pull out all the stops. With its heavy-duty cleaning strength, you will save on elbow grease when scrubbing the kitchen clean. Great for any serious indoor and outdoor scouring jobs.',
       image: 'https://assets.shop.loblaws.ca/products/20854632/b2/en/front/20854632_front_a06_@2.png',
       price: 3.19,
       quantity: 20,
