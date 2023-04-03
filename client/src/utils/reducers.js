@@ -80,6 +80,7 @@ export const reducer = (state, action) => {
             return {
               ...product,
               quantity: action.quantity,
+              inStock: true
             };
           }
           return product;

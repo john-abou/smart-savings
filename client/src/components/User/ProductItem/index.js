@@ -18,7 +18,6 @@ export default function ProductItem({ product }) {
     if (!Auth.loggedIn()) {
       document.location.assign('/login');
     }
-
     // Determine if the item is in the cart, then add to cart and update quantity
     const productInCart = cart.find( (cartProduct) => cartProduct._id === product._id);
     if (productInCart && productInCart.purchaseCount > 0) {
@@ -71,16 +70,6 @@ export default function ProductItem({ product }) {
         _id: product._id,
         quantity: parseInt(product.quantity) + 1
       })
-    }
-  }
-
-  const displayRemoveButton = () => {
-    // If the item is in the cart, update the style of the button to display
-    const productInCart = cart.find( (cartProduct) => cartProduct._id === product._id);
-    if (productInCart) {
-      return 'btn btn-primary'
-    } else {
-      return 'btn btn-primary disabled'
     }
   }
 

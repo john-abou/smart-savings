@@ -11,13 +11,14 @@ import Signup from './pages/Signup';
 import ProductPage from './pages/Product';
 import Purchased from './pages/Purchased';
 import Wildcard from './pages/404';
-import AdminHome from './pages/admin/AdminHome';
+import AdminHome from './pages/admin/adminHome';
 import AdminUsers from './pages/admin/adminUsers';
 import AdminProducts from './pages/admin/adminProducts';
 import AdminProductPage from './pages/admin/adminEditProduct';
 import Navbar from './components/Navbar';
 import { setContext } from '@apollo/client/link/context';
 import Auth from './utils/auth';
+import './style.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
