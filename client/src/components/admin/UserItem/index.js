@@ -1,27 +1,19 @@
 import React from 'react';
-import { useStoreContext } from '../../../contexts/GlobalContext';
 import { UPDATE_USER } from '../../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
-export default function UserItem( {user} ) {
-  const [state, dispatch] = useStoreContext();
-  const { users } = state;
-  console.log(users);
-  
+export default function UserItem( {user} ) {  
   const [updateUsers, { error }] = useMutation(UPDATE_USER);
   
   const handleChange = async (event) => {
     const userType = event.target.value;
     const isAdmin = userType === 'admin' ? true : false;
     const _id = user._id;
-    console.log('isAdmin: ', isAdmin);
-    console.log('userId: ', _id);
 
     try {
       const { data } = await updateUsers({
         variables: { _id, isAdmin },
       });
-      console.log(data);
     } catch (error) {
       console.log("Error updating user", error);
     }
@@ -29,7 +21,7 @@ export default function UserItem( {user} ) {
 
   return (
     <div className='container-fluid user-container'>
-      <div className='row'>
+      <div className='row' id='user-row'>
         <h3 className='col-3'>
           {user.firstName} {user.lastName}
         </h3>

@@ -11,8 +11,6 @@ const StoreProvider = ({ value = [], ...props }) => {
     cart: [],
     users: [],
     cartOpen: false,
-    categories: [],
-    currentCategory: '',
   });
 
   return <StoreContext.Provider value={[state, dispatch]} {...props} />;

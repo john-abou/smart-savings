@@ -3,5 +3,5 @@
 // import apollo queries later 
 
 export default function Purchased() {
-
+  // Functionality to be added with cart checkout and stripe...
 }
