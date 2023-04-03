@@ -85,7 +85,7 @@ export default function ProductItem({ product }) {
   }
 
   return (
-    <div className='col-sm-12 col-md-6 col-lg-3'>
+    <div className='col-sm-12 col-md-6 col-lg-3 my-2'>
       <div className='card'>
         <div className='card-body'>
           <Link to={`/products/${_id}`}>
