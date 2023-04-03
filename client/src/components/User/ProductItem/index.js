@@ -18,7 +18,6 @@ export default function ProductItem({ product }) {
     if (!Auth.loggedIn()) {
       document.location.assign('/login');
     }
-
     // Determine if the item is in the cart, then add to cart and update quantity
     const productInCart = cart.find( (cartProduct) => cartProduct._id === product._id);
     if (productInCart && productInCart.purchaseCount > 0) {

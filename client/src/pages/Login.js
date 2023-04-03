@@ -42,33 +42,41 @@ export default function Login() {
 
   // Render the login form with a link to the signup page and a button to submit the form 
   return (
-    <div id='login'>
-      <Link to="/signup">← Go to Signup</Link>
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={handleInputChange}
-          />
+    <div id='login' className='container'>
+      <div className='row'>
+        <h3 className='mb-4 text-center'>Login</h3>
+        <form onSubmit={handleFormSubmit}>
+          <div className='form-group my-1'> 
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              placeholder='Enter email'
+              className='form-control'
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className='form-group my-1'>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              className='form-control'
+              placeholder='Enter password'
+              value={password}
+              onChange={handleInputChange}
+            />
+          </div>
+          {errors && <p>{errors}</p>}
+        </form>
+        <div className='mx-auto text-center'>
+          <button className='btn btn-primary text-end mt-3 mb-1 col-12 text-center mx-auto' type="submit" onClick={handleFormSubmit}>Login</button>
+          <Link to="/signup">← Go to Signup</Link>
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={handleInputChange}
-          />
-        </div>
-        {errors && <p>{errors}</p>}
-        <button type="submit">Login</button>
-      </form>
+      </div>
     </div>
   );
 }

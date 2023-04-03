@@ -41,10 +41,10 @@ export default function Signup() {
 
   // Render the login page and a button to submit the form
   return (
-    <div>
-      <Link to="/login">← Go to Login</Link>
+    <div id='signup'>
+      <h3 className='mb-4 text-center'>Signup</h3>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-group my-1">
           <label htmlFor="firstName">First Name</label>
           <input
             type="text"
@@ -56,7 +56,7 @@ export default function Signup() {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group my-1">
           <label htmlFor="lastName">Last Name</label>
           <input
             type="text"
@@ -68,7 +68,7 @@ export default function Signup() {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group my-1">
           <label htmlFor="email">Email address</label>
           <input
             type="email"
@@ -80,7 +80,7 @@ export default function Signup() {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group my-1">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -92,9 +92,12 @@ export default function Signup() {
           />
         </div>
         {error && <div className="alert alert-danger">{error.message}</div>}
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        <div className='mx-auto text-center'>
+          <button type="submit" className='btn btn-primary text-end mt-4 mb-1 col-12 text-center mx-auto' onClick={handleSubmit}>
+            Signup
+          </button>
+          <Link to="/login">← Go to Login</Link>
+        </div>
       </form>
     </div>
   );
