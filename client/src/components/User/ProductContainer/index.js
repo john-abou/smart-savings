@@ -1,12 +1,8 @@
-// Import React
 import React, { useEffect } from 'react';
-// Import statemanagement hooks and reducers/actions
 import { useStoreContext } from '../../../contexts/GlobalContext';
 import { UPDATE_PRODUCTS } from '../../../utils/actions';
-// Import apollo hooks and queries
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_PRODUCTS } from '../../../utils/queries';
-// Import ProductItem component
 import ProductItem from '../ProductItem';
 
 

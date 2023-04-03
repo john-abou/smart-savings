@@ -22,7 +22,7 @@ db.once('open', async () => {
         'Bathroom Tissue. Facial Tissue. Paper Towels. Napkins. There’s a Royale for every room.',
       image: 'https://assets.shop.loblaws.ca/products/21363770/b2/en/front/21363770_front_a06_@2.png',
       price: 7.99,
-      quantity: 13,
+      quantity: 10,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {

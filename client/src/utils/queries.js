@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-
 // QUERY_PRODUCTS takes an optional category argument and returns a list of products with their _id, name,description, price, quantity, image, and the _id of their associated category
 export const QUERY_PRODUCTS = gql`
   query getProducts($category: ID) {
