@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
@@ -15,14 +13,12 @@ export default function Signup() {
     password: '',
   });
 
-  // Define a function to handle form input changes
   const handleChange = (e) => {
     const { id, type, checked, value } = e.target;
     const newValue = type === 'checkbox' ? checked : value;
     setFormData((prev) => ({ ...prev, [id]: newValue }));
   };
 
-  // Define the form from DOM
   const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleSubmit = async (e) => {
@@ -39,7 +35,6 @@ export default function Signup() {
     }
   };    
 
-  // Render the login page and a button to submit the form
   return (
     <div id='signup'>
       <h3 className='mb-4 text-center'>Signup</h3>

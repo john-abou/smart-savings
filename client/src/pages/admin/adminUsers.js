@@ -1,6 +1,4 @@
-// Admin page that allows user management
-// Import dependencies and queries
-import React, {useEffect, useMutation} from "react";
+import React, {useEffect} from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_USERS } from "../../utils/queries";
 import { UPDATE_USERS } from "../../utils/actions";

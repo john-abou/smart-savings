@@ -1,26 +1,17 @@
-/* eslint-disable no-unused-vars */
-// Import React
-import React, { useState, useEffect, useReducer } from 'react';
-// Import statemanagement hooks and reducers/actions
+import React, { useState, useEffect } from 'react';
 import { useStoreContext } from '../../contexts/GlobalContext';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
-// Import apollo hooks and queries
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
-
 import { useMutation } from '@apollo/client';
 import { DELETE_ITEM } from '../../utils/mutations';
-
 import { Link } from 'react-router-dom';
-
-
 
 export default function ProductContainer() {
   const [state, dispatch] = useStoreContext();
   const [productId, setProductId] = useState('');
 
   const [deleteProduct] = useMutation(DELETE_ITEM);
-
   const { data }  = useQuery(QUERY_ALL_PRODUCTS);
 
   useEffect(() => {

@@ -19,27 +19,22 @@
 }
 
 .user-container {
-  background-color: #f5f5f5;
-  border: 1px solid #e0e0e0;
-  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   padding: 10px;
 }
 
-.user-container .row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px;
+.user-row {
+  background-color: #f2f2f2; 
+  border-radius: 5px; 
+  margin-bottom: 10px; 
 }
 
-.user-container .row:hover {
-  background-color: #e0e0e0;
+.form-check {
+  display: flex; 
+  align-items: center; 
 }
 
-.user-container .row > * {
-  margin-right: 10px;
-}
-
-.user-container .row > *:last-child {
-  margin-right: 0;
+#accountType {
+  margin-top: 5px; 
 }

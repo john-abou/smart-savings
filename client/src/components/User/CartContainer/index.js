@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useReducer } from 'react';
-import { reducer } from '../../../utils/reducers'
+import React from 'react';
 import { useStoreContext } from '../../../contexts/GlobalContext';
 import CartItem from '../CartItem';
 import { TOGGLE_CART } from '../../../utils/actions';
@@ -26,6 +24,7 @@ export default function CartContainer() {
 
   // When the checkout button is clicked, use the cart data to create a new order in the database
   const submitCheckout = async () => {
+    // Functionality to be added.
   };
 
   if (!cartOpen) {
@@ -35,7 +34,7 @@ export default function CartContainer() {
       </div>
     );
   }
-
+  
   return (
     <div className="cart">
       <div className="close" onClick={toggleCart}>[close]</div>

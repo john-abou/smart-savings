@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useStoreContext } from '../../../contexts/GlobalContext';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY, CLEAR_CART, ADD_TO_INVENTORY, REMOVE_FROM_INVENTORY, INVENTORY_CHECK } from '../../../utils/actions';
@@ -6,10 +5,7 @@ import { Link } from 'react-router-dom';
 import Auth from '../../../utils/auth';
 
 export default function ProductItem({ product }) {
-  // destructure product properties
   const { name, description, price, quantity, inStock, inCart, image, _id } = product;
-
-  // Define dispatch from the global state hook and destructure the cart
   const [state, dispatch] = useStoreContext();
   const { cart } = state;
 

@@ -8,9 +8,8 @@ import Auth from '../utils/auth';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // Define a state for form validation errors (useState hook)
   const [errors, setErrors] = useState(null);
-  // Define the loginUser mutation (useMutation hook) and pass in the LOGIN mutation
+
   const [loginUser, {error, data}] = useMutation(LOGIN);
 
   // handleFormSubmit function to execute loginUser mutation and handle errors
@@ -18,10 +17,8 @@ export default function Login() {
     event.preventDefault();
     try {
       const response = await loginUser({ variables: { email, password } });
-      console.log('Login Form Response: ', response)
       // Define the JWT from the response
       const token = response.data.login.token;
-      console.log('Login Form Token: ', token)
       // Store the JWT in local storage
       Auth.login(token);
     } catch (error) {
@@ -32,7 +29,6 @@ export default function Login() {
   // handleInputChange function to update state based on form input changes 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    // name will be either 'email' or 'password'
     if (name === 'email') {
       setEmail(value);
     } else if (name === 'password') {
