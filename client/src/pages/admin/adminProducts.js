@@ -38,7 +38,7 @@ export default function ProductContainer() {
   <section id='products' className='container-fluid'>
     <div className='text-center'>
       <Link to='/admin/products/add'>
-      <button className='btn btn-primary' onClick={handleAdd}>Add to Cart</button>
+      <button className='btn btn-primary' onClick={handleAdd}>Add Product</button>
       </Link>
     </div>
     <div className='row'>
