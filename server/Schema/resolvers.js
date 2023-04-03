@@ -64,16 +64,10 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addProduct: async (parent, { name, description, price, category }, context) => {
-      if (context.user) {
-        const updatedOrder = await Order.findOneAndUpdate(
-          { _id: context.order._id },
-          { $push: { products: { name, description, price, category } } },
-          { new: true }
-        );
-        return updatedOrder;
-      }
-      throw new AuthenticationError('You need to be logged in!');
+    addProduct: async (parent, args) => {
+  
+        const addProduct = await Product.create(args);
+        return addProduct;
     },
     removeProduct: async (parent, { productId }, context) => {
       if (context.user) {
