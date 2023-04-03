@@ -5,15 +5,15 @@
     margin-right: 20px;
 }
 .container {
-    border: 1px solid #ddd; /* Add border to the container */
-    border-radius: 5px; /* Add some border-radius to soften the edges */
-    padding: 10px; /* Add some padding to the container */
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    padding: 10px; 
   }
   
   .row {
-    background-color: #f2f2f2; /* Add background color to each row */
-    border-radius: 5px; /* Add some border-radius to soften the edges */
-    margin-bottom: 10px; /* Add some margin between rows */
+    background-color: #f2f2f2; 
+    border-radius: 5px; 
+    margin-bottom: 10px; 
   }
   
   .cart-img {
