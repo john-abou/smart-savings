@@ -14,6 +14,7 @@ import AdminHome from './pages/admin/adminHome';
 import AdminUsers from './pages/admin/adminUsers';
 import AdminProducts from './pages/admin/adminProducts';
 import AdminProductPage from './pages/admin/adminEditProduct';
+import AdminAddProductPage from './pages/admin/adminAddProduct';
 import Navbar from './components/Navbar';
 import { setContext } from '@apollo/client/link/context';
 import Auth from './utils/auth';

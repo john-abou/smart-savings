@@ -25,6 +25,10 @@ export default function ProductContainer() {
     }
   }, [data, dispatch]);
 
+  const handleAdd= async () => {
+    window.location.replace(`/admin/products/add`)
+  }
+
   const deleteitem = async (productId) => {
     await deleteProduct({ variables: { productId } });
     window.location.replace(`/admin/products`)
@@ -32,6 +36,9 @@ export default function ProductContainer() {
 
   return (
   <section id='products' className='container-fluid'>
+    <div className='text-center'>
+      <button className='btn btn-primary' onClick={handleAdd}>Add to Cart</button>
+    </div>
     <div className='row'>
       {state.products.map((product) => (
         <div className='col-sm-12 col-md-6 col-lg-3 my-2' key={product.id}>
