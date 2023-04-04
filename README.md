@@ -37,6 +37,11 @@ Admin users have access to the following functionalities:
 - Viewing a list of all users and their information
 - Viewing a list of all orders and their information
 
+### Admin Credentials
+
+- ADMIN_EMAIL: pamela@testmail.com
+- ADMIN_PASSWORD: password12345
+
 ## User Functionalities
 
 Non-admin users have access to the following functionalities:
@@ -46,6 +51,11 @@ Non-admin users have access to the following functionalities:
 - Browsing and searching for items
 - Adding items to a shopping cart
 - Viewing the shopping cart and making changes to it
+
+### User Credentials
+
+- USER_EMAIL: eholt@testmail.com
+- USER_PASSWORD: password12345
 
 ## Puppeteer Functionality
 
