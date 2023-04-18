@@ -1,13 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { ProductList } from '../components';
+import Auth from './utils/auth';
+
 
 // Check if user is logged in before rendering the UserDashboard component by accessing the isLoggedIn property from the Redux store using the useSelector hook
 const UserDashboard = () => {
-  const { isLoggedIn } = useSelector((state) => state.auth);
 
-  if (!isLoggedIn) {
+  if (!Auth.loggedIn()) {
     return <div>You need to be logged in to access this page.</div>;
   }
 

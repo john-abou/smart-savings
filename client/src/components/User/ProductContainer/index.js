@@ -12,7 +12,7 @@ export default function ProductContainer() {
   const { data }  = useQuery(QUERY_ALL_PRODUCTS);
 
   useEffect(() => {
-    if (data) {
+    if (data && state.products.length === 0) {
       dispatch({
         type: UPDATE_PRODUCTS,
         products: data.products

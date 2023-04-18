@@ -14,19 +14,26 @@ export default function ProductItem({ product }) {
     if (!Auth.loggedIn()) {
       document.location.assign('/login');
     }
+    console.log('STATE INSIDE HOMEPAGE---- AFTER ADD TO CART');
+    console.log(state);
     // Determine if the item is in the cart, then add to cart and update quantity
     const productInCart = cart.find( (cartProduct) => cartProduct._id === product._id);
     if (productInCart && productInCart.purchaseCount > 0) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: productInCart._id,
-        purchaseCount: parseInt(productInCart.purchaseCount) + 1
+        purchaseCount: parseInt(productInCart.purchaseCount) + 1,
+        quantity: parseInt(product.quantity) - 1,
       });
       console.log(cart)
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...product, purchaseCount: 1 }
+        product: { 
+          ...product, 
+          purchaseCount: 1, 
+          quantity: parseInt(product.quantity) - 1 
+        }
       });
     }    
     dispatch({
@@ -48,7 +55,8 @@ export default function ProductItem({ product }) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: productInCart._id,
-        purchaseCount: parseInt(productInCart.purchaseCount) - 1
+        purchaseCount: parseInt(productInCart.purchaseCount) - 1,
+        quantity: parseInt(product.quantity) + 1
       });
       dispatch({
         type: ADD_TO_INVENTORY,

@@ -46,6 +46,7 @@ export const reducer = (state, action) => {
         cart: state.cart.map((product) => {
           if (action._id === product._id) {
             product.purchaseCount = action.purchaseCount
+            product.quantity = action.quantity
           }
           return product;
         }),
@@ -134,3 +135,10 @@ export const reducer = (state, action) => {
 export const useProductReducer = (initialState) => {
   return useReducer(reducer, initialState);
 };
+
+
+/* 
+
+
+
+*/

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_PRODUCT } from '../utils/queries';
 import { useStoreContext } from '../contexts/GlobalContext';
-import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../utils/actions';
+import { ADD_TO_CART, UPDATE_CART_QUANTITY, REMOVE_FROM_INVENTORY, INVENTORY_CHECK } from '../utils/actions';
 import CartContainer from '../components/User/CartContainer';
 
 import PriceChart from '../components/User/PriceChart/priceHistoryChart';
@@ -15,8 +15,6 @@ export default function ProductPage() {
 
   const { id } = useParams();
 
-  console.log(id)
-
   const [newproduct, setNewProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,22 +22,50 @@ export default function ProductPage() {
   const [WalmartPriceHistory, setWalmartPriceHistory] = useState([]);
   const [LoblawsPriceHistory, setLoblawsPriceHistory] = useState([]);
 
+  console.log('STATE OF CART BEFORE CLICKING ADD_TO_CART', state)
+
+
   const addToCart = () => {
+    console.log('STATE OF CART AFTER CLICKING ADD_TO_CART', state)
+
+
     // Determine if the item is in the cart, then add to cart and update quantity
-    const productInCart = state.cart.find((cartProduct) => cartProduct._id === newproduct._id);
+    const productInCart = state.cart.find((cartProduct) => cartProduct._id === id);
+    const productToAddToCart = state.products.find((product) => product._id === id);
+
+    console.log('cartProduct._id === id)', productInCart);
+    console.log(productToAddToCart)
+
+
     if (productInCart && productInCart.purchaseCount > 0) {
+      console.log('------ CURRENT QUANTITY ON CLICK INSIDE PRODUCT PAGE', productInCart.quantity)
+      console.log('state', state)
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: productInCart._id,
-        purchaseCount: parseInt(productInCart.purchaseCount) + 1
+        purchaseCount: parseInt(productInCart.purchaseCount) + 1,
+        quantity: parseInt(productInCart.quantity) - 1,
       });
+      dispatch({
+        type: REMOVE_FROM_INVENTORY,
+        _id: productInCart._id,
+        quantity: parseInt(productInCart.quantity) - 1
+      })
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...newproduct, purchaseCount: 1 }
+        product: { 
+          ...productToAddToCart, 
+          purchaseCount: 1, 
+          quantity: parseInt(productToAddToCart.quantity) - 1 
+        }
       });
+      dispatch({
+        type: REMOVE_FROM_INVENTORY,
+        _id: productToAddToCart._id,
+        quantity: parseInt(productToAddToCart.quantity) - 1
+      })
     }
-    console.log('cart',state);
   }
   
   const { data } = useQuery(QUERY_SINGLE_PRODUCT, {
