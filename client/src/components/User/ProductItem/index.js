@@ -93,7 +93,7 @@ export default function ProductItem({ product }) {
     <div className='col-md-6 col-xl-4 col-xxl-3 my-2'>
       <div className='card' style={{height: '500px'}}>
         <div className='card-title mt-2' style={{padding: '0 1rem'}}>
-          <Link to={`/products/${_id}`} style={{textDecoration: 'none'}}>
+          <Link to={`/products/${_id}`} style={{textDecoration: 'none', color: '#07689F'}}>
             <h5 className='card-title'>{isLessThanLargeBkpt ? (isMobile ? truncateText(description, 20) : truncateText(name, 35)) : truncateText(name, 25)}</h5>
           </Link>
         </div>
@@ -103,8 +103,8 @@ export default function ProductItem({ product }) {
             <img src={image} width="150" height="150" alt={`${name}`}></img>
             <p className='card-text mt-5 mb-0' style={{fontSize: '.9rem'}}>CAD: ${price}</p>
             <div className='w-100 text-center'>
-              <button className='btn btn-primary w-30' style={inCart ? {display: 'inline-block', marginRight: '10px'} : {display: 'none'} } onClick={removeFromCart}>Remove</button>
-              <button className='btn btn-primary w-30' style={inCart ? {marginleft: '10px'} : { marginLeft: "0" }} onClick={addToCart} disabled={!inStock}>Add to Cart</button>
+              <button className='btn btn-primary w-30' style={inCart ? {display: 'inline-block', backgroundColor: '#FE7E67', borderColor: '#fbfbfb', marginRight: '10px'} : {display: 'none'} } onClick={removeFromCart}>Remove</button>
+              <button className='btn btn-primary w-30' style={inCart ? {marginleft: '10px', backgroundColor: '#07689F'} : { marginLeft: "0", backgroundColor: '#07689F' }} onClick={addToCart} disabled={!inStock}>Add to Cart</button>
             </div>
           </div>
         </div>
