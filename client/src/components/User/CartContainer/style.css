@@ -1,7 +1,7 @@
 .cart-closed {
-  position: absolute !important;
-  top: 1% !important;
-  right: 1%;
+  position: absolute;
+  top: 14%;
+  right: 2%;
   font-size: 2rem;
   cursor: pointer;
   padding: .25rem;
@@ -10,8 +10,8 @@
 }
 
 .cart {
-  position: absolute !important;
-  top: 1% !important;
+  position: absolute;
+  top: 10%;
   right: 1%;
   min-width: 30%;
   max-width: 35%;
@@ -21,4 +21,20 @@
   padding: .5rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
   border-bottom-left-radius: .5rem;
+}
+
+/* breakpoint styling */
+@media screen and (max-width: 1200px) {
+  .cart {
+    min-width: 50%;
+    max-width: 55%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .cart {
+    min-width: 95%;
+    position: absolute;
+    margin: 0 2.5%; 
+  }
 }

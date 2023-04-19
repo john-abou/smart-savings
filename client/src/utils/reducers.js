@@ -28,12 +28,13 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cartOpen: true,
-        cart: [...state.cart, action.product],
+        cart: [...state.cart, action.cart],
         products: state.products.map((product) => {
-          if (product._id === action.product._id) {
+          if (product._id === action.cart._id) {
             return {
               ...product,
               inCart: true,
+              startingInventory: action.startingInventory
             };
           }
           return product;
@@ -46,6 +47,7 @@ export const reducer = (state, action) => {
         cart: state.cart.map((product) => {
           if (action._id === product._id) {
             product.purchaseCount = action.purchaseCount
+            product.quantity = action.quantity
           }
           return product;
         }),
@@ -114,7 +116,7 @@ export const reducer = (state, action) => {
           if (product._id === action._id) {
             return {
               ...product,
-              quantity: action.quantity,
+              quantity: action.startingInventory,
               inCart: false,
             };
           }
@@ -134,3 +136,10 @@ export const reducer = (state, action) => {
 export const useProductReducer = (initialState) => {
   return useReducer(reducer, initialState);
 };
+
+
+/* 
+
+
+
+*/

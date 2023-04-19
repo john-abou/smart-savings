@@ -52,7 +52,7 @@ export default function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/*" element={<Wildcard />} />
 
-              {/* Protected Routes Use the PrivateRoute component to protect the following routes  */}
+              {/* Protected Routes Use the loggedin boolean to protect the following routes  */}
               <Route path="/admin" element={(Auth.loggedIn() ? <AdminHome /> : <Login /> )} />
               <Route path="/admin/products" element={(Auth.loggedIn() ? <AdminProducts /> : <Login /> )} />
               <Route path="/admin/users" element={(Auth.loggedIn() ? <AdminUsers /> : <Login /> )} />

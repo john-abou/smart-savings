@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useStoreContext } from '../../../contexts/GlobalContext';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY, CLEAR_CART, ADD_TO_INVENTORY, REMOVE_FROM_INVENTORY, INVENTORY_CHECK } from '../../../utils/actions';
 import { Link } from 'react-router-dom';
@@ -14,19 +14,27 @@ export default function ProductItem({ product }) {
     if (!Auth.loggedIn()) {
       document.location.assign('/login');
     }
+
     // Determine if the item is in the cart, then add to cart and update quantity
     const productInCart = cart.find( (cartProduct) => cartProduct._id === product._id);
     if (productInCart && productInCart.purchaseCount > 0) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: productInCart._id,
-        purchaseCount: parseInt(productInCart.purchaseCount) + 1
+        purchaseCount: parseInt(productInCart.purchaseCount) + 1,
+        quantity: parseInt(product.quantity) - 1,
       });
       console.log(cart)
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...product, purchaseCount: 1 }
+        cart: { 
+          ...product, 
+          purchaseCount: 1, 
+          inCart: true,
+          quantity: parseInt(product.quantity) - 1,
+          startingInventory: parseInt(product.quantity)
+        }
       });
     }    
     dispatch({
@@ -48,7 +56,8 @@ export default function ProductItem({ product }) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: productInCart._id,
-        purchaseCount: parseInt(productInCart.purchaseCount) - 1
+        purchaseCount: parseInt(productInCart.purchaseCount) - 1,
+        quantity: parseInt(product.quantity) + 1
       });
       dispatch({
         type: ADD_TO_INVENTORY,
@@ -57,6 +66,7 @@ export default function ProductItem({ product }) {
       })
       console.log(cart)
     } else {
+      const removeBtn = document.querySelector('remove-hide') 
       dispatch({
         type: CLEAR_CART,
         _id: product._id
@@ -68,21 +78,33 @@ export default function ProductItem({ product }) {
       })
     }
   }
+  
+  // Make a function to truncate text
+  const truncateText = (text, maxlength) => {
+    return (text.length > maxlength) ?
+    text.slice(0, maxlength - 1) + '…' : text;
+  }
+
+  // Vars for breakpoints
+  const isMobile = window.innerWidth < 576;
+  const isLessThanLargeBkpt = window.innerWidth < 1200;
 
   return (
-    <div className='col-sm-12 col-md-6 col-lg-3 my-2'>
-      <div className='card'>
-        <div className='card-body'>
-          <Link to={`/products/${_id}`}>
-            <h5 className='card-title'>{name}</h5>
+    <div className='col-md-6 col-xl-4 col-xxl-3 my-2'>
+      <div className='card' style={{height: '500px'}}>
+        <div className='card-title mt-2' style={{padding: '0 1rem'}}>
+          <Link to={`/products/${_id}`} style={{textDecoration: 'none', color: '#07689F'}}>
+            <h5 className='card-title'>{isLessThanLargeBkpt ? (isMobile ? truncateText(description, 20) : truncateText(name, 35)) : truncateText(name, 25)}</h5>
           </Link>
-          <p className='card-text'>{description}</p>
-          <p className='card-text'>CAD: ${price}</p>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <img src={image} width="250" height="250" alt={`${name}`}></img>
-            <div style={{ marginTop: "10px" }}>
-              <button className='btn btn-primary' onClick={removeFromCart} disabled={!inCart} >Remove From Cart</button>
-              <button className='btn btn-primary' style={{ marginLeft: "10px" }} onClick={addToCart} disabled={!inStock}>Add to Cart</button>
+        </div>
+        <div className='card-body d-flex flex-column justify-content-between pt-0' style={{height: '350px', marginBottom: '10px'}}>
+          <p className='card-text mb-5' style={{fontSize: '.9rem'}}>{isLessThanLargeBkpt ? (isMobile ? truncateText(description, 120) : truncateText(description, 150) ) : truncateText(description, 100)}</p>
+          <div className='d-flex flex-column align-items-center justify-content-end'>
+            <img src={image} width="150" height="150" alt={`${name}`}></img>
+            <p className='card-text mt-5 mb-0' style={{fontSize: '.9rem'}}>CAD: ${price}</p>
+            <div className='w-100 text-center'>
+              <button className='btn btn-primary w-30' style={inCart ? {display: 'inline-block', backgroundColor: '#FE7E67', borderColor: '#fbfbfb', marginRight: '10px'} : {display: 'none'} } onClick={removeFromCart}>Remove</button>
+              <button className='btn btn-primary w-30' style={inCart ? {marginleft: '10px', backgroundColor: '#07689F'} : { marginLeft: "0", backgroundColor: '#07689F' }} onClick={addToCart} disabled={!inStock}>Add to Cart</button>
             </div>
           </div>
         </div>
@@ -96,5 +118,5 @@ export default function ProductItem({ product }) {
         </div>
       </div>
     </div>
-  );
+  );  
 }
