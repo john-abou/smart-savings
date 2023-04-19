@@ -77,6 +77,8 @@ export default function ProductItem({ product }) {
     }
   }
 
+  console.log('QUANTITY ON HOMEPAGE LOAD', quantity)
+
   return (
     <div className='col-sm-12 col-md-6 col-lg-3 my-2'>
       <div className='card'>

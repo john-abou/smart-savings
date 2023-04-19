@@ -22,6 +22,8 @@ export default function ProductContainer() {
     }
   }, [data, dispatch]);
 
+  console.log('PRODUCTS ON LOAD OF HOME PAGE---BEFORE FEEDING TO PRODUCTITEM AS PROP', state.products)
+
   return (
     <section id='products' className='container-fluid'>
       <div className='row'>

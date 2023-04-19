@@ -40,6 +40,7 @@ export const reducer = (state, action) => {
         }),
       };
     case UPDATE_CART_QUANTITY:
+      console.log('======================', state);
       return {
         ...state,
         cartOpen: true,

@@ -24,21 +24,19 @@ export default function ProductPage() {
 
   console.log('STATE OF CART BEFORE CLICKING ADD_TO_CART', state)
 
+  // Determine if the item is in the cart, then add to cart and update quantity
+  const productInCart = state.cart.find((cartProduct) => cartProduct._id === id);
+  const productToAddToCart = state.products.find((product) => product._id === id);
 
   const addToCart = () => {
     console.log('STATE OF CART AFTER CLICKING ADD_TO_CART', state)
-
-
-    // Determine if the item is in the cart, then add to cart and update quantity
-    const productInCart = state.cart.find((cartProduct) => cartProduct._id === id);
-    const productToAddToCart = state.products.find((product) => product._id === id);
 
     console.log('cartProduct._id === id)', productInCart);
     console.log(productToAddToCart)
 
 
     if (productInCart && productInCart.purchaseCount > 0) {
-      console.log('------ CURRENT QUANTITY ON CLICK INSIDE PRODUCT PAGE', productInCart.quantity)
+      console.log('------ QUANTITY ON CLICK INSIDE PRODUCT PAGE', productInCart.quantity);
       console.log('state', state)
       dispatch({
         type: UPDATE_CART_QUANTITY,
@@ -46,10 +44,11 @@ export default function ProductPage() {
         purchaseCount: parseInt(productInCart.purchaseCount) + 1,
         quantity: parseInt(productInCart.quantity) - 1,
       });
+      console.log('------ QUANTITY AFTER UPDATE_CART_QUANTITY DISPATCH', productInCart.quantity);
       dispatch({
         type: REMOVE_FROM_INVENTORY,
         _id: productInCart._id,
-        quantity: parseInt(productInCart.quantity) - 1
+        quantity: parseInt(productInCart.quantity) 
       })
     } else {
       dispatch({
@@ -72,6 +71,8 @@ export default function ProductPage() {
     variables: { id },
   })
 
+  console.log('------ CURRENT QUANTITY AFTER DISPATCH INSIDE PRODUCT PAGE', productInCart ? productInCart?.quantity :  productToAddToCart.quantity)
+
   useEffect(() => {
     if (data && data.getProductById.AmazonHistory.priceHistory) {
       setAmazonPriceHistory(data.getProductById.AmazonHistory.priceHistory);
@@ -93,7 +94,7 @@ export default function ProductPage() {
       <div className="d-flex">
         <div className="d-flex flex-column justify-content-center align-items-center p-3" style={{ margin: '20px' }}>
           <img src={newproduct.image} className="mx-auto d-block" width="500" height="500" />
-          <button className="btn btn-primary w-100 mt-3" onClick={addToCart}>Add to Cart</button>
+          <button className="btn btn-primary w-75 mt-3" onClick={addToCart}>Add to Cart</button>
         </div>
         <div className="p-3" >
           <div className="d-flex flex-column justify-content-center align-items-center p-3" style={{ margin: '20px' }}>
