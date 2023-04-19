@@ -53,10 +53,12 @@ export default function ProductPage() {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { 
+        cart: { 
           ...productToAddToCart, 
           purchaseCount: 1, 
-          quantity: parseInt(productToAddToCart.quantity) - 1 
+          inCart: true,
+          quantity: parseInt(productToAddToCart.quantity) - 1,
+          startingInventory: parseInt(productToAddToCart.quantity)
         }
       });
       dispatch({
@@ -71,7 +73,6 @@ export default function ProductPage() {
     variables: { id },
   })
 
-  console.log('------ CURRENT QUANTITY AFTER DISPATCH INSIDE PRODUCT PAGE', productInCart ? productInCart?.quantity :  productToAddToCart.quantity)
 
   useEffect(() => {
     if (data && data.getProductById.AmazonHistory.priceHistory) {
@@ -104,7 +105,7 @@ export default function ProductPage() {
             <div className="d-flex flex-row justify-content-center align-items-center mb-4">
               <h2 className="mr-3">Price: ${newproduct.price} </h2>
             </div>
-            <p>Quantity: {newproduct.quantity}</p>
+            <p>Quantity: {productInCart ? productInCart?.quantity :  productToAddToCart.quantity}</p>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', margin: '20px' }}>
             <div style={{ margin: '0 10px' }}>

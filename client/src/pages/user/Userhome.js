@@ -3,13 +3,14 @@ import ProductContainer from '../../components/User/ProductContainer';
 import CartContainer from '../../components/User/CartContainer'
 
 export default function UserHome() {
+  const isMobile = window.innerWidth < 576;
   return (
-    <div style={{ padding: '2rem', position: 'relative' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '1rem', textAlign: 'center' }}>Welcome to your Dashboard</h1>
-        <p style={{ fontSize: '1.5rem', textAlign: 'center' }}>View and manage your account information and purchase history.</p>
+    <div style={isMobile ? {padding: '1rem 2rem 2rem'} : { padding: '1rem 5rem 2rem'}}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '1rem' }}>
+        <h1 style={{ fontSize: '3rem', marginBottom: '3rem', textAlign: 'center' }}>Home Essentials for Less</h1>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', marginTop: '2rem' }}>
+      <hr></hr>
+      <div style={{marginTop: '4rem'}}>
         <ProductContainer />
         <CartContainer />
       </div>

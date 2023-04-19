@@ -28,19 +28,19 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cartOpen: true,
-        cart: [...state.cart, action.product],
+        cart: [...state.cart, action.cart],
         products: state.products.map((product) => {
-          if (product._id === action.product._id) {
+          if (product._id === action.cart._id) {
             return {
               ...product,
               inCart: true,
+              startingInventory: action.startingInventory
             };
           }
           return product;
         }),
       };
     case UPDATE_CART_QUANTITY:
-      console.log('======================', state);
       return {
         ...state,
         cartOpen: true,
@@ -116,7 +116,7 @@ export const reducer = (state, action) => {
           if (product._id === action._id) {
             return {
               ...product,
-              quantity: action.quantity,
+              quantity: action.startingInventory,
               inCart: false,
             };
           }

@@ -11,7 +11,7 @@ export default function CartItem({ product }) {
     dispatch({
       type: CLEAR_CART,
       _id: product._id,
-      quantity: parseInt(product.quantity)
+      startingInventory: parseInt(product.startingInventory)
     })
   };
   
