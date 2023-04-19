@@ -22,3 +22,19 @@
   box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
   border-bottom-left-radius: .5rem;
 }
+
+/* breakpoint styling */
+@media screen and (max-width: 1200px) {
+  .cart {
+    min-width: 50%;
+    max-width: 55%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .cart {
+    min-width: 95%;
+    position: absolute;
+    margin: 0 2.5%; 
+  }
+}

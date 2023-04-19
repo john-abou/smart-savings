@@ -15,10 +15,10 @@ export default function Navbar() {
         { /* Render login/signup or logout based on user state */}
         {!loggedIn ? (
           <div>
-            <button className='btn btn-outline-primary'>
+            <button className='btn btn-outline-primary mx-2'>
               <Link to='/login'>Login</Link>
             </button>
-            <button className='btn btn-outline-primary'>
+            <button className='btn btn-outline-primary mx-2'>
               <Link to='/signup'>Sign Up</Link>
             </button> 
           </div>

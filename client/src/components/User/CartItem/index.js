@@ -14,6 +14,12 @@ export default function CartItem({ product }) {
       startingInventory: parseInt(product.startingInventory)
     })
   };
+
+  // Make a function to truncate text
+  const truncateText = (text, maxlength) => {
+    return (text.length > maxlength) ?
+    text.slice(0, maxlength - 1) + '…' : text;
+  }
   
   return (
     <div className="container my-3">
@@ -22,7 +28,7 @@ export default function CartItem({ product }) {
           <img className='cart-img' src={product.image} alt='product'></img>
         </div>  
         <div className="col-8">
-          {product.name},  <strong>${product.price}</strong> x {product.purchaseCount}
+          {truncateText(product.name, 20)},  <strong>${product.price}</strong> x {product.purchaseCount}
         </div>
         <div className='ms-sm-3 ms-md-4 col-1'>
           <span

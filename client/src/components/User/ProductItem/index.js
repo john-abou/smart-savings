@@ -79,11 +79,13 @@ export default function ProductItem({ product }) {
     }
   }
   
-  // Make a function to truncate the name of the product if it exceeds 40 characters
+  // Make a function to truncate text
   const truncateText = (text, maxlength) => {
     return (text.length > maxlength) ?
     text.slice(0, maxlength - 1) + '…' : text;
   }
+
+  // Vars for breakpoints
   const isMobile = window.innerWidth < 576;
   const isLessThanLargeBkpt = window.innerWidth < 1200;
 
