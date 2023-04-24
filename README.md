@@ -1,6 +1,6 @@
 # Puppeteer's Bazaar
 
-Puppeteer's Bazaar is an online shopping application that allows users to purchase household items from Amazon, Loblaws, and Walmart. The application is built with React/React Native, MongoDB/Apollo, Express, GraphQL, and Puppeteer (for web scraping).
+Puppeteer's Bazaar is an ecommerce website that offers a unique shopping experience for customers by providing price comparisons for products across multiple popular websites like Amazon, Loblaws, and Walmart. The website scrapes prices from these websites and displays them side-by-side, allowing customers to make an informed purchasing decision. The site's user-friendly interface makes it easy for customers to navigate and find the products they are looking for. Puppeteer's Bazaar aims to provide its customers with the best deals on the products they want to buy, making it an ideal destination for those who love to shop online.
 
 ## Table of Contents
 
