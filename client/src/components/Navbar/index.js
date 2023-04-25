@@ -33,7 +33,7 @@ export default function Navbar() {
             </button> 
           </div>
         ) : user.admin ? ( 
-          <button className='btn btn-outline-primary navbar-links' onClick={Auth.logout}>
+          <button className='btn btn-outline-primary nav-button navbar-links' onClick={Auth.logout}>
             <Link to='/logout'>Logout</Link>
           </button>
             ) : (
