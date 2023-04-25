@@ -1,0 +1,18 @@
+/* User management page */
+.user-container {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+.user-row {
+  background-color: #fbfbfb; 
+  border-radius: 5px; 
+  margin-bottom: 10px; 
+}
+.form-check {
+  display: flex; 
+  align-items: center; 
+}
+#accountType {
+  margin-top: 5px; 
+}

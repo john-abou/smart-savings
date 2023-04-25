@@ -5,7 +5,6 @@ import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_PRODUCT } from '../utils/queries';
 import { useStoreContext } from '../contexts/GlobalContext';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY, REMOVE_FROM_INVENTORY, INVENTORY_CHECK } from '../utils/actions';
-import CartContainer from '../components/User/CartContainer';
 
 import PriceChart from '../components/User/PriceChart/priceHistoryChart';
 
@@ -118,7 +117,6 @@ export default function ProductPage() {
               <PriceChart key={newproduct._id} priceHistory={LoblawsPriceHistory} comp="Loblaws" lineColour="red" />
             </div>
           </div>
-          <CartContainer />
         </div>
       </div>
     </div>

@@ -1,21 +1,13 @@
 .cart-closed {
-  position: absolute;
-  top: 14%;
-  right: 2%;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
   padding: .25rem;
   width: 50px;
   height: 50px;
 }
 
-.cart {
-  position: absolute;
-  top: 10%;
-  right: 1%;
-  min-width: 30%;
-  max-width: 35%;
-  max-height: 60%;
+.custom-dropdown .dropdown-menu {
+  width: 500px;
   background-color: #f5f5f5;
   overflow: auto;
   padding: .5rem;
@@ -24,17 +16,9 @@
 }
 
 /* breakpoint styling */
-@media screen and (max-width: 1200px) {
-  .cart {
-    min-width: 50%;
-    max-width: 55%;
-  }
-}
-
 @media screen and (max-width: 992px) {
-  .cart {
-    min-width: 95%;
-    position: absolute;
-    margin: 0 2.5%; 
+  .custom-dropdown .dropdown-menu  {
+    width: 95vw;
+    margin: 0 auto; 
   }
 }

@@ -17,7 +17,6 @@ export default function UserHome() {
       <hr></hr>
       <div style={{marginTop: '4rem'}}>
         <ProductContainer />
-        <CartContainer />
       </div>
     </div>
   );  

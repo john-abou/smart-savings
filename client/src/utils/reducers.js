@@ -7,6 +7,7 @@ import {
   UPDATE_CART_QUANTITY,
   CLEAR_CART,
   TOGGLE_CART,
+  CLOSE_CART,
   ADD_TO_INVENTORY,
   INVENTORY_CHECK,
   REMOVE_FROM_INVENTORY
@@ -77,6 +78,7 @@ export const reducer = (state, action) => {
     case ADD_TO_INVENTORY:
       return {
         ...state,
+        cartOpen: true,
         products: state.products.map((product) => {
           if (product._id === action._id) {
             return {
@@ -91,6 +93,7 @@ export const reducer = (state, action) => {
     case REMOVE_FROM_INVENTORY:
       return {
         ...state,
+        cartOpen: true,
         products: state.products.map((product) => {
           if (product._id === action._id) {
             return {
@@ -128,6 +131,11 @@ export const reducer = (state, action) => {
         ...state,
         cartOpen: !state.cartOpen,
       };
+    case CLOSE_CART:
+      return {
+        ...state,
+        cartOpen: false
+      }
     default:
       return state;
   }
@@ -136,10 +144,3 @@ export const reducer = (state, action) => {
 export const useProductReducer = (initialState) => {
   return useReducer(reducer, initialState);
 };
-
-
-/* 
-
-
-
-*/

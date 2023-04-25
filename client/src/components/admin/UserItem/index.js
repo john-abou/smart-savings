@@ -1,6 +1,7 @@
 import React from 'react';
 import { UPDATE_USER } from '../../../utils/mutations';
 import { useMutation } from '@apollo/client';
+import './style.css'
 
 export default function UserItem( {user} ) {  
   const [updateUsers, { error }] = useMutation(UPDATE_USER);
