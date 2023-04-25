@@ -3,16 +3,19 @@ import { useStoreContext } from '../../../contexts/GlobalContext';
 import { ADD_TO_CART, TOGGLE_CART, UPDATE_CART_QUANTITY, CLEAR_CART, ADD_TO_INVENTORY, REMOVE_FROM_INVENTORY, INVENTORY_CHECK } from '../../../utils/actions';
 import { Link } from 'react-router-dom';
 import Auth from '../../../utils/auth';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductItem({ product }) {
   const { name, description, price, quantity, inStock, inCart, image, _id } = product;
   const [state, dispatch] = useStoreContext();
   const { cart, cartOpen } = state;
 
+  const navigate = useNavigate();
+
   const addToCart = () => {
     // If the user is not logged in, redirect them to the login page
     if (!Auth.loggedIn()) {
-      document.location.assign('/Login');
+      navigate('/login');
       return;
     }
     
