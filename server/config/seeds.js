@@ -22,7 +22,7 @@ db.once('open', async () => {
         'Bathroom Tissue. Facial Tissue. Paper Towels. Napkins. There’s a Royale for every room.',
       image: 'https://assets.shop.loblaws.ca/products/21363770/b2/en/front/21363770_front_a06_@2.png',
       price: 7.99,
-      quantity: 10,
+      quantity: 20,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -45,7 +45,7 @@ db.once('open', async () => {
         'Tim Hortons Original Blend is a Perfectly Balanced, Medium Roast Coffee with a Smooth Finish.',
       image: 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/813TwvYFi2L._AC_SX522_.jpg',
       price: 17.99,
-      quantity: 40,
+      quantity: 20,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -68,7 +68,7 @@ db.once('open', async () => {
         'Clinically proven to build relief and daily protection for sensitive teeth.',
       image: 'https://i5.walmartimages.ca/images/Large/139/678/6000205139678.jpg',
       price: 4.19,
-      quantity: 99,
+      quantity: 20,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -92,7 +92,7 @@ db.once('open', async () => {
         'Tide PODS® Original laundry detergent pacs offer a powerful clean that works on 100% of common stains, even in cold.',
       image: 'https://images.ctfassets.net/snqjgnra1eqk/5wEfI2jpYi0gglqSzWW1J9/fd6d69075a19fa67ebd4fd4ce4ee1580/Tide_Hagrid_Original_PODS_hero_1920x2287_0329.png?fm=png',
       price: 24.03,
-      quantity: 120,
+      quantity: 20,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -116,7 +116,7 @@ db.once('open', async () => {
         'PEDIGREE VITALITY+ Adult Roasted Chicken and Vegetable Flavour Food for Dogs is formulated to give dogs all of the energy and nourishment they need to continue living life to the fullest',
       image: 'https://i5.walmartimages.ca/images/Enlarge/683/106/6000197683106.jpg',
       price: 23.19,
-      quantity: 33,
+      quantity: 20,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -140,7 +140,7 @@ db.once('open', async () => {
         'Count on GLAD outdoor bags to measure up to the task. Strong and sturdy, avoid the messiest garbage disasters. And with the Easy-Tie flaps you just tie, grab, toss, and you’re done.',
       image: 'https://i5.walmartimages.ca/images/Enlarge/811/201/6000202811201.jpg',
       price: 24.00,
-      quantity: 17,
+      quantity: 20,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
@@ -164,7 +164,7 @@ db.once('open', async () => {
         'Bring superior care with Dove Original Beauty Bar. Enjoy soft, smooth, and healthy-looking skin with the gentle cleansing formula enriched with our signature ¼ moisturizing cream.',
       image: 'https://i5.walmartimages.ca/images/Enlarge/900/662/6000200900662.jpg',
       price: 13.19,
-      quantity: 80,
+      quantity: 20,
       inStock: true,
       purchaseCount: 0,
       AmazonHistory: {
