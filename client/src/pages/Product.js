@@ -28,12 +28,6 @@ export default function ProductPage() {
   const productToAddToCart = state.products.find((product) => product._id === id);
 
   const addToCart = () => {
-    console.log('STATE OF CART AFTER CLICKING ADD_TO_CART', state)
-
-    console.log('cartProduct._id === id)', productInCart);
-    console.log(productToAddToCart)
-
-
     if (productInCart && productInCart.purchaseCount > 0) {
       console.log('------ QUANTITY ON CLICK INSIDE PRODUCT PAGE', productInCart.quantity);
       console.log('state', state)
