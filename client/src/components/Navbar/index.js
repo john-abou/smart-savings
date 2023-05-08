@@ -5,7 +5,6 @@ import bazaar from '../../images/bazaar-transparent.png';
 import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../../utils/queries";
 import CartContainer from '../User/CartContainer';
-import Dropdown from 'react-bootstrap/Dropdown';
 import './style.css';
 
 export default function Navbar() {

@@ -1,0 +1,41 @@
+.card {
+  height: 500px;
+}
+
+.card-title {
+  padding: .5rem .5rem;
+  margin-bottom: 0;
+}
+
+.card-title h5 {
+  text-decoration: none;
+  color: #07689F;
+}
+
+.card-desc {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card-body {
+  height: 350px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 0;
+}
+
+.image-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+}
+
+.card-price {
+  font-size: .9rem;
+  margin: 2rem 0 0;
+}
