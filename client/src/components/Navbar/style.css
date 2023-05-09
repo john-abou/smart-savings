@@ -4,8 +4,12 @@
 .navbar-brand {
     margin-left: 4rem;
 }
+.brand-img{
+    padding: 0;
+    margin: 0;
+}
 .navbar-toggler{
-    margin-right: 4rem;
+    /* margin-right: 4rem; */
 }
 .navbar-collapse{
     justify-content: flex-end;
@@ -17,6 +21,12 @@
 .navbar-links-loggedIn{
     margin: 0 0 0 1rem;
     font-size: .95rem;
+}
+.navbar-links-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .nav-link {
     color: #07689F !important;
@@ -30,5 +40,8 @@
     .navbar-brand {
         margin: 0 0 0 50%; /* Change 50% to (50% - the width of .navbar-brand) */
         transform: translateX(-50%);
+    }
+    .navbar-links-user{
+        flex-direction: column;
     }
 }

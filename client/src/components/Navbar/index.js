@@ -15,11 +15,13 @@ export default function Navbar() {
   const { data } = useQuery(QUERY_USER);
   const user = data?.user || {};
 
+  const isMobile = window.innerWidth <= 589;
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark" style={{backgroundColor: '#FE7E67'}}>
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          <img src={bazaar} height="25" />
+          <img className='brand-img' src={bazaar} height={isMobile ? "18" : "25"} />
         </Link>
         <button
           className="navbar-toggler"
@@ -59,7 +61,7 @@ export default function Navbar() {
             </ul>
           </div>
           ) : (
-            <div className="d-flex flex-row justify-content-center align-items-center navbar-links">
+            <div className="navbar-links-user navbar-links text-center">
               <CartContainer />
               <ul className='navbar-nav navbar-links-loggedIn'>
                 <li className="nav-item">

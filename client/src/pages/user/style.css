@@ -1,3 +1,21 @@
 .bazaar-img {
   background-color: #FBFBFB;
 }
+.user-home{
+  padding: 1rem 4rem 2rem;
+}
+
+
+
+/* Media Queries */
+@media screen and (max-width: 992px) {
+  .user-home{
+    padding: 1rem 3rem 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user-home{
+    padding: 1rem 2rem 2rem;
+  }
+}
