@@ -16,35 +16,63 @@ export default function Navbar() {
   const user = data?.user || {};
 
   return (
-    <nav className='navbar navbar-expand-lg navbar-dark' style={{backgroundColor: '#FE7E67'}}>
-      <div className='container-fluid d-flex flex-row justify-content-between'>
-        <Link className='navbar-brand' to='/'>
-          <img src={bazaar} height='25'></img>
+    <nav className="navbar navbar-expand-md navbar-dark" style={{backgroundColor: '#FE7E67'}}>
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
+          <img src={bazaar} height="25" />
         </Link>
-        { /* Render the login/signup or logout and cart based on account type/login info. ∂*/}
-        {!loggedIn ? (
-          <div className='navbar-links'>
-            <button className='btn btn-outline-primary nav-button mx-2'>
-              <Link to='/login'>Login</Link>
-            </button>
-            <button className='btn btn-outline-primary nav-button mx-2'>
-              <Link to='/signup'>Sign Up</Link>
-            </button> 
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          {!loggedIn ? (
+            <div className="d-flex flex-row justify-content-center align-items-center navbar-links">
+              <ul className='navbar-nav navbar-links'>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/signup">
+                    Sign Up
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          ) : user.admin ? (
+          <div className="d-flex flex-row justify-content-center align-items-center navbar-links">
+            <ul className='navbar-nav navbar-links'>
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout">
+                  Logout
+                </Link>
+              </li>
+            </ul>
           </div>
-        ) : user.admin ? ( 
-          <button className='btn btn-outline-primary nav-button navbar-links' onClick={Auth.logout}>
-            <Link to='/logout'>Logout</Link>
-          </button>
-            ) : (
-          <div className='d-flex flex-row justify-content-center align-items-center navbar-links'>
-            <CartContainer />
-            <button className='btn btn-outline-primary nav-button mx-2' onClick={Auth.logout}>
-              <Link to='/logout'>Logout</Link>
-            </button>
-          </div>
-            )
-        }
+          ) : (
+            <div className="d-flex flex-row justify-content-center align-items-center navbar-links">
+              <CartContainer />
+              <ul className='navbar-nav navbar-links-loggedIn'>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/logout">
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );
 }
+  

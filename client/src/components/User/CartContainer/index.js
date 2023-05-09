@@ -47,8 +47,8 @@ export default function CartContainer() {
   return (
     <div>
       <Dropdown className="custom-dropdown" show={cartOpen} onToggle={toggleCart}>
-        <Dropdown.Toggle variant="outline-primary nav-button mx-2" id="dropdown-basic">
-          Cart 
+        <Dropdown.Toggle id="dropdown-basic">
+          Cart <span id='cart-emoji'>🛒</span> 
         </Dropdown.Toggle>
         <Dropdown.Menu align={isMobile ? 'end' : 'start'} >
           <div className='close-btn' onClick={closeCart}>
