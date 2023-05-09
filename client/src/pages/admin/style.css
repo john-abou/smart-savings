@@ -1,0 +1,14 @@
+.users-container{
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  padding: 2rem;  
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
+  margin: 0 5rem
+}
+
+@media screen and (max-width: 768px) {
+  .users-container{  
+    margin: 0 1rem;
+  }
+}

@@ -22,41 +22,41 @@ export default function UserItem( {user} ) {
 
   return (
     <div className='container-fluid user-container'>
-      <div className='row' id='user-row'>
-        <h3 className='col-3'>
+      <div id='user-row'>
+        <h3 className='col-4 user-name'>
           {user.firstName} {user.lastName}
         </h3>
-        <p className='col-2'>Email: {user.email}</p>
-        <div className="form-check col-2" onChange={handleChange}>
-          <input
-            className="form-check-input" 
-            type="radio" 
-            name={`isAdmin-${user.firstName}`} 
-            value="admin" 
-            id={`typeAdmin-${user._id}`} 
-            checked={user.admin}
-            onChange={handleChange}
-          />
-          <label className="form-check-label" htmlFor={`typeAdmin-${user._id}`}>
-            Admin
-          </label>
+        <p className='user-text' >{user.email}</p>
+        <div className='user-text'>
+          <div className="form-check" onChange={handleChange}>
+            <input
+              className="form-check-input" 
+              type="radio" 
+              name={`isAdmin-${user.firstName}`} 
+              value="admin" 
+              id={`typeAdmin-${user._id}`} 
+              checked={user.admin}
+              onChange={handleChange}
+            />
+            <label className="form-check-label" htmlFor={`typeAdmin-${user._id}`}>
+              Admin
+            </label>
+          </div>
+          <div className="form-check">
+            <input 
+              className="form-check-input" 
+              type="radio" 
+              name={`isAdmin-${user.firstName}`} 
+              value="regular" 
+              id={`typeUser-${user._id}`} 
+              checked={!user.admin} 
+              onChange={handleChange}
+            />
+            <label className="form-check-label" htmlFor={`typeUser-${user._id}`}>
+              User
+            </label>
+          </div>
         </div>
-        <div className="form-check col-2">
-          <input 
-            className="form-check-input" 
-            type="radio" 
-            name={`isAdmin-${user.firstName}`} 
-            value="regular" 
-            id={`typeUser-${user._id}`} 
-            checked={!user.admin} 
-            onChange={handleChange}
-          />
-          <label className="form-check-label" htmlFor={`typeUser-${user._id}`}>
-            User
-          </label>
-        </div>
-
-        <p id='accountType'>User Type: {user.admin ? 'Admin' : 'User'} </p>
       </div>
     </div>
   );

@@ -1,18 +1,38 @@
 /* User management page */
 .user-container {
   border: 1px solid #ddd;
+  background-color: white;
   border-radius: 5px;
   padding: 10px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
+  margin: 10px 0;
 }
-.user-row {
-  background-color: #fbfbfb; 
+#user-row {
   border-radius: 5px; 
-  margin-bottom: 10px; 
+  margin: 5px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.user-name{
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 .form-check {
   display: flex; 
   align-items: center; 
 }
-#accountType {
-  margin-top: 5px; 
+
+
+@media screen and (max-width: 768px) {
+  .users-container{  
+    margin: 0 1rem;
+  }
+  .user-name {
+    font-size: 1.2rem;
+  }
+  .user-text{
+    font-size: .9rem;
+  }
 }
