@@ -52,7 +52,7 @@ export default function Navbar() {
             </div>
           ) : user.admin ? (
           <div className="d-flex flex-row justify-content-center align-items-center navbar-links">
-            <ul className='navbar-nav navbar-links'>
+            <ul className='navbar-nav'>
               <li className="nav-item">
                 <a className="nav-link" href='#' onClick={Auth.logout}>
                   Logout
