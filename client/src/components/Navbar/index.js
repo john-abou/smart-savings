@@ -37,7 +37,7 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           {!loggedIn ? (
             <div className="d-flex flex-row justify-content-center align-items-center navbar-links">
-              <ul className='navbar-nav navbar-links'>
+              <ul className='navbar-nav'>
                 <li className="nav-item">
                   <Link className="nav-link" to="/login">
                     Login
