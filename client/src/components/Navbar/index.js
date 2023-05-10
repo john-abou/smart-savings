@@ -54,9 +54,9 @@ export default function Navbar() {
           <div className="d-flex flex-row justify-content-center align-items-center navbar-links">
             <ul className='navbar-nav navbar-links'>
               <li className="nav-item">
-                <Link className="nav-link" to="/logout">
+                <a className="nav-link" href='#' onClick={Auth.logout}>
                   Logout
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -65,9 +65,9 @@ export default function Navbar() {
               <CartContainer />
               <ul className='navbar-nav navbar-links-loggedIn'>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/logout">
-                    Logout
-                  </Link>
+                <a className="nav-link" href='#' onClick={Auth.logout}>
+                  Logout
+                </a>
                 </li>
               </ul>
             </div>
