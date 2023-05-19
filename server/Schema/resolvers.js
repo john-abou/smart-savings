@@ -6,6 +6,8 @@ const { searchAmazon } = require('../utils/scrape/searchAmazon');
 const { searchWal } = require('../utils/scrape/searchWal');
 const { searchLoblaws } = require('../utils/scrape/searchLoblaws');
 
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
@@ -28,10 +30,36 @@ const resolvers = {
     },
     users: async () => {
       const userData = await User.find();
-      return userData;
+      return userData; 
     },
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
+      const order = new Order({ products: args.products });
+      const { products } = await order.populate('products').execPopulate();
+      const line_items = [];
 
+      for (let i = 0; i < products.length; i++) {
+        const product = await stripe.products.create({
+          name: products[i].name,
+          description: products[i].description,
+          images: [`${url}/images/${products[i].image}`]
+        });
+
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: products[i].price * 100,
+          currency: 'cad',
+        });
+
+        line_items.push({
+          price: price.id,
+          quantity: 1
+        });
+      }
+
+    }
   },
+
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

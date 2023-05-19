@@ -45,6 +45,10 @@ type Category{
     name:String
 }
 
+type Checkout {
+    session: ID
+}
+
 type Order{
     _id:ID
     purchaseDate:String
@@ -57,6 +61,7 @@ type Query{
     products:[Product]
     categories:[Category]
     getProductById(_id: ID!): Product
+    checkout(products: [ID]!): Checkout
 }
 
 type Mutation{

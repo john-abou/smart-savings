@@ -1,13 +1,22 @@
 import React, {useState} from 'react';
 import { useStoreContext } from '../../../contexts/GlobalContext';
-import CartItem from '../CartItem';
+import { useLazyQuery } from '@apollo/client';
+import { loadStripe } from '@stripe/stripe-js';
 import { TOGGLE_CART } from '../../../utils/actions';
-import './style.css';
+import { QUERY_CHECKOUT } from '../../../utils/queries';
 import Dropdown from 'react-bootstrap/Dropdown';
+import CartItem from '../CartItem';
+import './style.css';
+
+const stripePromise = loadStripe('pk_test_51N8755L91T6XpsIhDN5lpeEWMKRo3F22geFa7XjgZ5C02355JIatuJsMeeLJRpMjwlaIznXZbQvgK2wxz9j9yjUz003GwtylaG')
 
 export default function CartContainer() {  
   const [state, dispatch] = useStoreContext();
   const { cart, cartOpen } = state;
+
+
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+
 
   const [width, setWidth] = useState(window.innerWidth);
 
