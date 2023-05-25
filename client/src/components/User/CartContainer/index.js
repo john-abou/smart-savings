@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStoreContext } from '../../../contexts/GlobalContext';
 import { useLazyQuery } from '@apollo/client';
 import { loadStripe } from '@stripe/stripe-js';
@@ -8,7 +8,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import CartItem from '../CartItem';
 import './style.css';
 
-const stripePromise = loadStripe('pk_test_51N8755L91T6XpsIhDN5lpeEWMKRo3F22geFa7XjgZ5C02355JIatuJsMeeLJRpMjwlaIznXZbQvgK2wxz9j9yjUz003GwtylaG')
+const stripePromise = loadStripe('pk_test_51N8755L91T6XpsIhDN5lpeEWMKRo3F22geFa7XjgZ5C02355JIatuJsMeeLJRpMjwlaIznXZbQvgK2wxz9j9yjUz003GwtylaG');
 
 export default function CartContainer() {  
   const [state, dispatch] = useStoreContext();
@@ -16,6 +16,17 @@ export default function CartContainer() {
 
 
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+
+  // We check to see if there is a data object that exists, if so this means that a checkout session was returned from the backend
+  // Then we should redirect to the checkout with a reference to our session id
+  useEffect(() => {
+    console.log('useEffect data', data)
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
 
 
   const [width, setWidth] = useState(window.innerWidth);
@@ -50,7 +61,20 @@ export default function CartContainer() {
 
   // When the checkout button is clicked, use the cart data to create a new order in the database
   const submitCheckout = async () => {
-    // Functionality to be added.
+
+    const productIDs = [];
+
+    // Loop through the cart array and push the _id of each item into the productIDs array
+    for (const product of cart) {
+      productIDs.push(product._id);
+    }
+
+    console.log('product IDs:', productIDs)
+
+    // Use the getCheckout query to create a new order in the database
+    getCheckout({
+      variables: { products: productIDs }
+    });
   };
  
   return (
@@ -77,7 +101,7 @@ export default function CartContainer() {
           )}
               <div className="d-flex mt-4 justify-content-around align-items-center mb-2">
                 <strong >Total: ${calculateTotal()}</strong>
-                <button className='btn btn-dark' onClick={submitCheckout}>Checkout </button>
+                <button className='btn btn-dark' onClick={submitCheckout}>Checkout</button>
               </div>
         </Dropdown.Menu>
       </Dropdown>

@@ -2,6 +2,8 @@
 
 Puppeteer's Bazaar is an ecommerce website that offers a unique shopping experience for customers by providing price comparisons for products across multiple popular websites like Amazon, Loblaws, and Walmart. The website scrapes prices from these websites and displays them side-by-side, allowing customers to make an informed purchasing decision. The site's user-friendly interface makes it easy for customers to navigate and find the products they are looking for. Puppeteer's Bazaar aims to provide its customers with the best deals on the products they want to buy, making it an ideal destination for those who love to shop online.
 
+<img src='client/src/images/bazaar2.png'>
+
 ## Table of Contents
 
 - [Technologies](#technologies)
@@ -17,8 +19,9 @@ Puppeteer's Bazaar is an ecommerce website that offers a unique shopping experie
 
 The technologies used in this application include:
 
-- React/React Native
-- MongoDB/Apollo
+- React
+- MongoDB
+- GraphQL/Apollo
 - Express
 - GraphQL
 - dotenv
@@ -37,7 +40,7 @@ Admin users have access to the following functionalities:
 - Viewing a list of all users and their information
 - Viewing a list of all orders and their information
 
-### Admin Credentials
+#### Admin Credentials
 
 - ADMIN_EMAIL: pamela@testmail.com
 - ADMIN_PASSWORD: password12345
@@ -52,7 +55,7 @@ Non-admin users have access to the following functionalities:
 - Adding items to a shopping cart
 - Viewing the shopping cart and making changes to it
 
-### User Credentials
+#### User Credentials
 
 - USER_EMAIL: eholt@testmail.com
 - USER_PASSWORD: password12345
@@ -85,6 +88,9 @@ This will install the latest version of Puppeteer and its dependencies in your p
 ## Usage
 
 Once the application is running, users can create an account, log in, and browse household items from Amazon, Loblaws, and Walmart. They can also add items to their cart.
+
+* Admin users can add, edit, and delete items from the database. They can also view a list of all users and edit the account type.
+* Users are able to purchase items from the cart.
 
 ## Deployment
 

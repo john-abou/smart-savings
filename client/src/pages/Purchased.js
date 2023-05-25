@@ -1,7 +1,14 @@
-// import components later
-// import hook to get global state later
-// import apollo queries later 
+import React from "react";
+import { useStoreContext } from "../contexts/GlobalContext";
 
 export default function Purchased() {
-  // Functionality to be added with cart checkout and stripe...
+  const [state, dispatch] = useStoreContext();
+  const { cart } = state;
+
+  return(
+    <div className="text-center mx-5 my-5">
+        <h1>Success!</h1>
+        <h2>Thank you for your purchase!</h2>
+    </div>
+  )
 }

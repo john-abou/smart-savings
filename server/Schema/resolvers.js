@@ -6,7 +6,7 @@ const { searchAmazon } = require('../utils/scrape/searchAmazon');
 const { searchWal } = require('../utils/scrape/searchWal');
 const { searchLoblaws } = require('../utils/scrape/searchLoblaws');
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = require('stripe')('sk_test_51N8755L91T6XpsIhJ7fwddYdsIIjVUmCsLe00ECx1vrYFBEVaDXbU0J7CUyrgTccjWwlvJncmom551xtKSa8sgZ900BXygd0we');
 
 const resolvers = {
   Query: {
@@ -35,7 +35,7 @@ const resolvers = {
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ products: args.products });
-      const { products } = await order.populate('products').execPopulate();
+      const { products } = await order.populate('products');
       const line_items = [];
 
       for (let i = 0; i < products.length; i++) {
@@ -49,7 +49,10 @@ const resolvers = {
           product: product.id,
           unit_amount: products[i].price * 100,
           currency: 'cad',
-        });
+        }); 
+
+        console.log('stripe price', price);
+        console.log('stripe product', product);
 
         line_items.push({
           price: price.id,
@@ -57,6 +60,15 @@ const resolvers = {
         });
       }
 
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items,
+        mode: 'payment',
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/`
+      });
+
+      return { session: session.id };
     }
   },
 
