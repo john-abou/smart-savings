@@ -5,15 +5,18 @@ Puppeteer's Bazaar is an ecommerce website that offers a unique shopping experie
 <img src='client/src/images/bazaar2.png'>
 
 ## Table of Contents
-
+- [Deployment](#deployment)
 - [Technologies](#technologies)
 - [Admin Functionalities](#admin-functionalities)
 - [User Functionalities](#user-functionalities)
 - [Puppeteer Functionality](#puppeteer-functionality)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Deployment](#deployment)
 - [Authors](#authors)
+
+## Deployment
+
+The application has been deployed to Heroku and can be accessed at https://puppeteers-bazaar.herokuapp.com/.
 
 ## Technologies
 
@@ -92,9 +95,6 @@ Once the application is running, users can create an account, log in, and browse
 * Admin users can add, edit, and delete items from the database. They can also view a list of all users and edit the account type.
 * Users are able to purchase items from the cart.
 
-## Deployment
-
-The application has been deployed to Heroku and can be accessed at https://puppeteers-bazaar.herokuapp.com/.
 
 ## Authors
 
